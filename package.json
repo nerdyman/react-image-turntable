@@ -1,8 +1,13 @@
 {
   "name": "react-image-turntable",
   "version": "2.5.4",
-  "homepage": "https://github.com/andrewmcoupe/react-image-turntable",
-  "description": "This package aims to display an object in 360 degree perspective with the use of multiple, angled images from around the object itself.",
+  "license": "MIT",
+  "homepage": "https://github.com/nerdyman/react-image-turntable",
+  "description": "Display a set of images as a draggable 360 degree turntable.",
+  "author": {
+    "name": "nerdyman",
+    "url": "https://github.com/nerdyman"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -12,18 +17,17 @@
     "test": "jest",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
-  "dependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
-  },
   "keywords": [
     "turntable",
     "product spinner",
+    "360 image",
     "image turntable",
     "react image"
   ],
-  "author": "Andy Coupe",
-  "license": "ISC",
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
@@ -44,16 +48,5 @@
     "prettier": "^2.0.5",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run precommit"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
   }
 }

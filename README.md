@@ -38,3 +38,7 @@ const MyTurntable = () => (
     <Turntable images={myImages} />
 )
 ```
+
+## Notes
+
+- Original implementation by @andrewmcoupe
