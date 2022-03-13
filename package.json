@@ -1,6 +1,6 @@
 {
   "name": "react-image-turntable",
-  "description": "Display an array of images as a 360 degree turntable",
+  "description": "Display an array of images as a 360 degree turntable.",
   "version": "2.5.4",
   "author": "nerdyman",
   "license": "MIT",

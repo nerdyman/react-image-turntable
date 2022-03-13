@@ -1,44 +1,47 @@
-[![andrewmcoupe](https://circleci.com/gh/andrewmcoupe/react-image-turntable.svg?style=shield)](LINK)
+<div align="center">
 
 # React Image Turntable
 
-###### built with TypeScript
-
-![](/readme-assets/example.gif)
+Display an array of images as a 360 degree turntable.
 
 ### [Try the demo](https://codesandbox.io/s/react-image-turntable-riy93) 👈
 
-This package aims to display an object in 360 degree perspective with the use of multiple, angled images from around the object itself which you need to provide.
+</div>
 
-A decent looking turntable will require 20-35 angled images from around the object, ordered correctly.
+## Install
 
-## Installation
-
-`npm i react-image-turntable`
-
-or
-
-`yarn add react-image-turntable`
+```sh
+npm i react-image-turntable
+# Or
+yarn add react-image-turntable
+# Or
+pnpm i react-image-turntable
+```
 
 ## Usage
 
-| Props  |   Type   |
-| ------ | :------: |
-| images | string[] |
+| Props    |    Type    | Required |
+| -------- | :--------: | :------: |
+| `images` | `string[]` |    ✓     |
+
+### Example
+
+```ts
+import React from 'react';
+import { Turntable } from 'react-image-turntable';
+
+const images = [
+  'https://via.placholder.com/1200x800?text=1',
+  'https://via.placholder.com/1200x800?text=2',
+  'https://via.placholder.com/1200x800?text=3',
+];
+
+export const Turntable = () => <Turntable images={images} />;
+```
 
 ---
 
-```javascript
-import React from 'react'
-import { Turntable } from 'react-image-turntable'
-
-const myImages = [<YOUR_IMAGE_PATHS>]
-
-const MyTurntable = () => (
-    <Turntable images={myImages} />
-)
-```
-
 ## Notes
 
-- Original implementation by @andrewmcoupe
+- It's recommended you use a minimum of 24-36 for a smooth experience
+- Original implementation by [@andrewmcoupe](https://github.com/andrewmcoupe)
