@@ -4,7 +4,7 @@
 
 Display an array of images as a 360 degree turntable.
 
-### [Try the demo](https://codesandbox.io/s/react-image-turntable-riy93) 👈
+### [👉 &nbsp; Try the demo &nbsp;👈](https://githubbox.com/nerdyman/react-image-turntable/tree/main/example)
 
 </div>
 
@@ -19,6 +19,8 @@ pnpm i react-image-turntable
 ```
 
 ## Usage
+
+### Props
 
 | Props    |    Type    | Required |
 | -------- | :--------: | :------: |
@@ -44,4 +46,5 @@ export const Turntable = () => <Turntable images={images} />;
 ## Notes
 
 - It's recommended you use a minimum of 24-36 for a smooth experience
-- Original implementation by [@andrewmcoupe](https://github.com/andrewmcoupe)
+- Legacy [v2.5.4 Demo](https://codesandbox.io/s/react-image-turntable-riy93)
+- Original version by [@andrewmcoupe](https://github.com/andrewmcoupe)
