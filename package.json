@@ -1,52 +1,91 @@
 {
   "name": "react-image-turntable",
+  "description": "Display an array of images as a 360 degree turntable",
   "version": "2.5.4",
+  "author": "nerdyman",
   "license": "MIT",
-  "homepage": "https://github.com/nerdyman/react-image-turntable",
-  "description": "Display a set of images as a draggable 360 degree turntable.",
-  "author": {
-    "name": "nerdyman",
-    "url": "https://github.com/nerdyman"
+  "sideEffects": false,
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=16"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
-    "precommit": "npm run build && npm test",
-    "prepublishOnly": "tsc",
-    "build": "tsc",
+    "bootstrap": "pnpm i && pnpm exec husky install",
+    "start": "tsup --watch",
+    "build": "tsup",
     "test": "jest",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+    "lint": "eslint && prettier --check",
+    "prepare": "husky",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
-  "keywords": [
-    "turntable",
-    "product spinner",
-    "360 image",
-    "image turntable",
-    "react image"
+  "browserslist": {
+    "production": [
+      "last 2 chrome versions",
+      "last 2 edge versions",
+      "last 2 firefox versions",
+      "last 2 safari versions",
+      "not dead",
+      "not ie > 0",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "pretty-quick --staged",
+      "eslint --fix",
+      "pnpm test --bail"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.mjs",
+      "limit": "2 KB"
+    }
   ],
   "peerDependencies": {
-    "react": ">=16.8",
-    "react-dom": ">=16.8"
+    "react": ">=16.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-typescript": "^7.9.0",
-    "@testing-library/react": "^10.0.3",
-    "@testing-library/react-hooks": "^3.2.1",
-    "@types/jest": "^25.2.1",
-    "@typescript-eslint/eslint-plugin": "^2.30.0",
-    "@typescript-eslint/parser": "^2.30.0",
-    "babel-jest": "^25.4.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-react": "^7.19.0",
-    "husky": "^4.2.5",
-    "jest": "^25.4.0",
-    "lint-staged": "^10.2.0",
-    "prettier": "^2.0.5",
-    "ts-jest": "^25.4.0",
-    "typescript": "^3.8.3"
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "browserslist": "^4.19.1",
+    "eslint": "^8.9.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-testing-library": "^5.0.5",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "size-limit": "^7.0.8",
+    "tslib": "^2.3.1",
+    "tsup": "^5.12.1",
+    "typescript": "^4.5.5",
+    "vitest": "^0.6.0"
   }
 }

@@ -1,17 +1,16 @@
-import React from 'react'
-import { useTurntable } from '../useTurntable'
+import React from 'react';
+import { useTurntable } from './useTurntable';
 
 interface TurntableProps {
-  images: string[]
+  images: string[];
 }
 
 export const Turntable: React.FC<TurntableProps> = ({ images }) => {
-  const { activeImageIndex, eventHandlers } = useTurntable(images)
+  const { activeImageIndex, eventHandlers } = useTurntable(images);
 
   return (
     <div {...eventHandlers} style={{ position: 'relative' }}>
-      {!images ||
-        (!images.length && <h1>Your gonna need to add your images...</h1>)}
+      {!images || (!images.length && <h1>Your gonna need to add your images...</h1>)}
       {images &&
         images.map((imageSrc, index) => (
           <img
@@ -30,5 +29,5 @@ export const Turntable: React.FC<TurntableProps> = ({ images }) => {
           />
         ))}
     </div>
-  )
-}
+  );
+};
