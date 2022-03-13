@@ -7,21 +7,19 @@
       "jsx": true
     }
   },
-  "plugins": ["testing-library", "@typescript-eslint", "react", "jest", "jest-dom"],
+  "plugins": ["testing-library", "@typescript-eslint", "react", "testing-library"],
   "extends": [
     "eslint:recommended",
-    "plugin:jest/recommended",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:testing-library/recommended",
-    "plugin:jest-dom/recommended"
+    "plugin:testing-library/react"
   ],
   "env": {
     "browser": true,
-    "es6": true,
-    "jest/globals": true
+    "es6": true
   },
   "settings": {
     "react": { "version": "detect" }
@@ -46,5 +44,11 @@
         "varsIgnorePattern": "^_"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ]
 }
