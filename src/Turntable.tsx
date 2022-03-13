@@ -1,21 +1,24 @@
 import React from 'react';
 import { useTurntable } from './useTurntable';
 
-interface TurntableProps {
+interface TurntableProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   images: string[];
 }
 
 export const Turntable: React.FC<TurntableProps> = ({ images }) => {
   const { activeImageIndex, eventHandlers } = useTurntable(images);
+  const [firstImage, ...otherImages] = images;
 
   return (
     <div {...eventHandlers} style={{ position: 'relative' }}>
-      {!images || (!images.length && <h1>Your gonna need to add your images...</h1>)}
-      {images &&
-        images.map((imageSrc, index) => (
+      <img src={firstImage} alt="Turntable image 1" />
+
+      {otherImages &&
+        otherImages.map((src, index) => (
           <img
-            key={imageSrc}
-            src={imageSrc}
+            key={src}
+            src={src}
+            alt={`Turntable image ${index + 1}`}
             style={{
               position: 'absolute',
               opacity: index === activeImageIndex ? 1 : 0,
@@ -24,8 +27,8 @@ export const Turntable: React.FC<TurntableProps> = ({ images }) => {
               right: 0,
               bottom: 0,
               width: '100%',
+              willChange: 'opacity',
             }}
-            alt={`turntable image ${index}`}
           />
         ))}
     </div>
