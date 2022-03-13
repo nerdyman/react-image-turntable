@@ -1,0 +1,50 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["testing-library", "@typescript-eslint", "react", "jest", "jest-dom"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:testing-library/recommended",
+    "plugin:jest-dom/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest/globals": true
+  },
+  "settings": {
+    "react": { "version": "detect" }
+  },
+  "rules": {
+    "linebreak-style": ["error", "unix"],
+    "lines-around-comment": 0,
+    "no-confusing-arrow": 0,
+    "no-console": ["warn", { "allow": ["warn"] }],
+    "no-debugger": 0,
+    "no-shadow": "warn",
+
+    "react/jsx-indent": 0,
+    "react/jsx-indent-props": 0,
+    "react/prop-types": 0,
+
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  }
+}
