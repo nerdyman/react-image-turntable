@@ -2,7 +2,7 @@
 
 # React Image Turntable
 
-Display an array of images as a 360 degree turntable.
+Display a set of images as a draggable 360 degree turntable.
 
 ### [👉 &nbsp; Try the demo &nbsp;👈](https://githubbox.com/nerdyman/react-image-turntable/tree/main/example)
 
@@ -33,13 +33,19 @@ import React from 'react';
 import { Turntable } from 'react-image-turntable';
 
 const images = [
-  'https://via.placholder.com/1200x800?text=1',
-  'https://via.placholder.com/1200x800?text=2',
-  'https://via.placholder.com/1200x800?text=3',
+  'https://via.placeholder.com/1200x800?text=1',
+  'https://via.placeholder.com/1200x800?text=2',
+  'https://via.placeholder.com/1200x800?text=3',
 ];
 
 export const Turntable = () => <Turntable images={images} />;
 ```
+
+Also see the [example code](./example) in the repo.
+
+## Contributing
+
+See the [contributing guide](./CONTRIBUTING.md) to get started.
 
 ---
 
