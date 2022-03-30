@@ -1,10 +1,11 @@
 {
   "name": "react-image-turntable",
-  "description": "Display an array of images as a 360 degree turntable.",
+  "description": "Display a set of images as a draggable 360 degree turntable.",
   "version": "2.5.4",
   "author": "nerdyman",
   "license": "MIT",
   "sideEffects": false,
+  "packageManager": "pnpm@6.32.3",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "files": [
@@ -15,7 +16,8 @@
     "node": ">=16"
   },
   "scripts": {
-    "bootstrap": "pnpm i && pnpm exec husky install",
+    "bootstrap": "corepack disable && corepack enable && pnpm i --frozen-lockfile",
+    "dx": "npm run bootstrap && pnpm exec husky install",
     "start": "tsup --watch",
     "build": "tsup",
     "test": "jest",
