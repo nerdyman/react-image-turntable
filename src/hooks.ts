@@ -27,8 +27,17 @@ export const useTurntableState = ({
       setActiveImageIndex((prev) => (prev - 1 < 0 ? imagesCount - 1 : prev - 1));
     };
 
+    const handleKeyDown = (ev: KeyboardEvent) => {
+      if (document.activeElement === ref.current) {
+        if (ev.key === 'ArrowLeft') {
+          decrementActiveIndex();
+        } else if (ev.key === 'ArrowRight') {
+          incrementActiveIndex();
+        }
+      }
+    };
+
     const handlePointerDown = (ev: PointerEvent) => {
-      // ev.preventDefault();
       prevDragPosition = ev.clientX;
       isDragging = true;
     };
@@ -51,11 +60,13 @@ export const useTurntableState = ({
       isDragging = false;
     };
 
+    target?.addEventListener('keydown', handleKeyDown, { capture: true });
     target?.addEventListener('pointerdown', handlePointerDown, { passive: true });
     target?.addEventListener('pointermove', handlePointerMove, { passive: true });
     target?.addEventListener('pointerup', handlePointerUp, { passive: true });
 
     return () => {
+      target?.removeEventListener('keydown', handleKeyDown);
       target?.removeEventListener('pointerdown', handlePointerDown);
       target?.removeEventListener('pointermove', handlePointerMove);
       target?.removeEventListener('pointerup', handlePointerUp);
