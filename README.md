@@ -22,9 +22,10 @@ pnpm i react-image-turntable
 
 ### Props
 
-| Props    |    Type    | Required |
-| -------- | :--------: | :------: |
-| `images` | `string[]` |    ✓     |
+| Props               |    Type    | Required | Default Value | Description                              |
+| ------------------- | :--------: | :------: | ------------- | ---------------------------------------- |
+| `images`            | `string[]` |    ✓     | `undefined`   | List of image `src` attributes.          |
+| `initialImageIndex` | `string[]` |          | `0`           | Image index to start on at first render. |
 
 ### Example
 

@@ -1,7 +1,7 @@
 export interface ReactImageTurntableProps {
-  /** List of image srcs. */
+  /** List of image `src` attributes. */
   images: string[];
-  /** Initial image to start on. */
+  /** Image index to start on at first render. */
   initialImageIndex?: number;
 }
 
