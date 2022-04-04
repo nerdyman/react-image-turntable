@@ -1,1 +1,2 @@
-export * from './Turntable'
+export * from './Turntable';
+export * from './types';
