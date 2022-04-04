@@ -1,12 +1,10 @@
 import React from 'react';
 import { useTurntableState } from './hooks';
-import type { ReactImageTurntableProps } from './types';
-
-type RootProps = React.HtmlHTMLAttributes<HTMLDivElement> & ReactImageTurntableProps;
+import type { ReactImageTurntableFullProps } from './types';
 
 export const CLASS_NAME_IMG = '__react-image-turntable__img';
 
-export const Turntable: React.FC<RootProps> = ({
+export const ReactImageTurntable: React.FC<ReactImageTurntableFullProps> = ({
   images,
   initialImageIndex = 0,
   style,

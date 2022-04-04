@@ -1,2 +1,2 @@
-export * from './Turntable';
+export * from './ReactImageTurntable';
 export * from './types';

@@ -30,7 +30,7 @@ pnpm i react-image-turntable
 
 ```ts
 import React from 'react';
-import { Turntable } from 'react-image-turntable';
+import { ReactImageTurntable } from 'react-image-turntable';
 
 const images = [
   'https://via.placeholder.com/1200x800?text=1',
@@ -38,7 +38,7 @@ const images = [
   'https://via.placeholder.com/1200x800?text=3',
 ];
 
-export const Turntable = () => <Turntable images={images} />;
+export const Turntable = () => <ReactImageTurntable images={images} />;
 ```
 
 Also see the [example code](./example) in the repo.
