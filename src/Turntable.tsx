@@ -13,19 +13,29 @@ export const Turntable: React.FC<RootProps> = ({
   tabIndex = 0,
   ...props
 }) => {
-  const { ref, activeImageIndex: aii } = useTurntableState({
+  const { ref, activeImageIndex } = useTurntableState({
     initialImageIndex,
     imagesCount: images.length,
   });
-  const [firstImage, ...otherImages] = images;
 
+  const [firstImage, ...otherImages] = images;
   const rootStyle: React.CSSProperties = {
     position: 'relative',
     ...style,
   };
 
   return (
-    <div {...props} ref={ref} style={rootStyle} tabIndex={tabIndex}>
+    <div
+      {...props}
+      ref={ref}
+      role="slider"
+      aria-valuemin={0}
+      aria-valuemax={images.length - 1}
+      aria-valuenow={activeImageIndex}
+      aria-valuetext={`${activeImageIndex + 1} of ${images.length}`}
+      style={rootStyle}
+      tabIndex={tabIndex}
+    >
       <img className={CLASS_NAME_IMG} src={firstImage} alt="Turntable image 1" />
 
       {otherImages?.map((src, index) => (
@@ -36,7 +46,7 @@ export const Turntable: React.FC<RootProps> = ({
           draggable={false}
           style={{
             position: 'absolute',
-            opacity: index === aii ? 1 : 0,
+            opacity: index === activeImageIndex ? 1 : 0,
             left: 0,
             top: 0,
             right: 0,
