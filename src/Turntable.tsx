@@ -5,13 +5,15 @@ interface TurntableProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   images: string[];
 }
 
+export const CLASS_NAME_IMG = '__react-image-turntable__img';
+
 export const Turntable: React.FC<TurntableProps> = ({ images }) => {
   const { activeImageIndex, eventHandlers } = useTurntable(images);
   const [firstImage, ...otherImages] = images;
 
   return (
     <div {...eventHandlers} style={{ position: 'relative' }}>
-      <img src={firstImage} alt="Turntable image 1" />
+      <img className={CLASS_NAME_IMG} src={firstImage} alt="Turntable image 1" />
 
       {otherImages &&
         otherImages.map((src, index) => (
@@ -27,7 +29,6 @@ export const Turntable: React.FC<TurntableProps> = ({ images }) => {
               right: 0,
               bottom: 0,
               width: '100%',
-              willChange: 'opacity',
             }}
           />
         ))}
