@@ -10,3 +10,5 @@ coverage
 *.ignore
 storybook-static
 .nyc_output
+test-results/
+playwright-report/
