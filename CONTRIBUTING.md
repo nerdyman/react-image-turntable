@@ -4,7 +4,7 @@ Thanks for contributing!
 
 ## Getting Started
 
-Ensure you're using the Node version specified in [`.nvmrc](./.nvmrc) and run the following to
+Ensure you're using the Node version specified in [.nvmrc](./.nvmrc) and run the following to
 bootstrap the project:
 
 ```sh
