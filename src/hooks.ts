@@ -40,6 +40,8 @@ export const useTurntableState = ({
     const handlePointerDown = (ev: PointerEvent) => {
       prevDragPosition = ev.clientX;
       isDragging = true;
+      window.addEventListener('pointerup', handlePointerUp, { passive: true });
+      window.addEventListener('pointermove', handlePointerMove, { passive: true });
     };
 
     const handlePointerMove = (ev: PointerEvent) => {
@@ -58,18 +60,18 @@ export const useTurntableState = ({
 
     const handlePointerUp = () => {
       isDragging = false;
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
     };
 
     target?.addEventListener('keydown', handleKeyDown, { capture: true });
     target?.addEventListener('pointerdown', handlePointerDown, { passive: true });
-    target?.addEventListener('pointermove', handlePointerMove, { passive: true });
-    target?.addEventListener('pointerup', handlePointerUp, { passive: true });
 
     return () => {
       target?.removeEventListener('keydown', handleKeyDown);
       target?.removeEventListener('pointerdown', handlePointerDown);
-      target?.removeEventListener('pointermove', handlePointerMove);
-      target?.removeEventListener('pointerup', handlePointerUp);
+      window.removeEventListener('pointerup', handlePointerUp);
+      window.removeEventListener('pointermove', handlePointerMove);
     };
   }, [imagesCount]);
 
