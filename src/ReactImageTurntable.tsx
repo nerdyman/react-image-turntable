@@ -13,11 +13,13 @@ export const ReactImageTurntable: React.FC<ReactImageTurntableFullProps> = ({
   initialImageIndex = 0,
   style,
   tabIndex = 0,
+  movementSensitivity = 20,
   ...props
 }) => {
   const { ref, activeImageIndex } = useTurntableState({
     initialImageIndex,
     imagesCount: images.length,
+    movementSensitivity
   });
 
   const [firstImage, ...otherImages] = images;
