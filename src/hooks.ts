@@ -3,14 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import type { ReactImageTurntableProps } from './types';
 
 interface UseTurntableStateProps
-  extends Required<Pick<ReactImageTurntableProps, 'initialImageIndex' | "movementSensitivity">> {
+  extends Required<Pick<ReactImageTurntableProps, 'initialImageIndex' | 'movementSensitivity'>> {
   imagesCount: number;
 }
 
 export const useTurntableState = ({
   initialImageIndex = 0,
   imagesCount,
-  movementSensitivity = 20
+  movementSensitivity = 20,
 }: UseTurntableStateProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(initialImageIndex);
   const ref = useRef<HTMLDivElement>(null);
@@ -74,7 +74,7 @@ export const useTurntableState = ({
       window.removeEventListener('pointerup', handlePointerUp);
       window.removeEventListener('pointermove', handlePointerMove);
     };
-  }, [imagesCount]);
+  }, [imagesCount, movementSensitivity]);
 
   return {
     ref,
