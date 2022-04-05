@@ -1,3 +1,5 @@
+import type { HtmlHTMLAttributes } from 'react';
+
 export interface ReactImageTurntableProps {
   /** List of image `src` attributes. */
   images: string[];
@@ -8,5 +10,5 @@ export interface ReactImageTurntableProps {
 }
 
 /** Base props *and* all available HTML element props. */
-export type ReactImageTurntableFullProps = React.HtmlHTMLAttributes<HTMLDivElement> &
+export type ReactImageTurntableFullProps = HtmlHTMLAttributes<HTMLDivElement> &
   ReactImageTurntableProps;

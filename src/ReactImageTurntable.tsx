@@ -1,4 +1,6 @@
 import React from 'react';
+import type { FC } from 'react';
+
 import { useTurntableState } from './hooks';
 import type { ReactImageTurntableFullProps } from './types';
 
@@ -8,7 +10,7 @@ const imgBaseStyle = {
   maxWidth: '100%',
 };
 
-export const ReactImageTurntable: React.FC<ReactImageTurntableFullProps> = ({
+export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
   images,
   initialImageIndex = 0,
   style,
