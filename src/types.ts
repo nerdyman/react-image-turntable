@@ -3,9 +3,9 @@ import type { HtmlHTMLAttributes } from 'react';
 export interface ReactImageTurntableProps {
   /** List of image `src` attributes. */
   images: string[];
-  /** Image index to start on at first render. */
+  /** Index of image to show first. */
   initialImageIndex?: number;
-  /** The amount a "drag" has to move before an image changes to next or previous */
+  /** The amount a "drag" has to move before an image changes to next or previous. */
   movementSensitivity?: number;
 }
 

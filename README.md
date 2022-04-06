@@ -14,7 +14,7 @@ Display a set of images as a draggable 360 degree turntable.
 - Responsive & fluid with intrinsic sizing
 - [Teeny Tiny](https://bundlephobia.com/result?p=react-image-turntable)
 - Zero dependencies
-- Type Safe
+- Type safe
 
 ## Install
 
@@ -30,10 +30,11 @@ pnpm i react-image-turntable
 
 ### Props
 
-| Props               | Type       | Required | Default Value | Description                              |
-| ------------------- | :--------- | :------: | :------------ | :--------------------------------------- |
-| `images`            | `string[]` |    ✓     | `undefined`   | List of image `src` attributes.          |
-| `initialImageIndex` | `number`   |          | `0`           | Image index to start on at first render. |
+| Props                 | Type       | Required | Default Value | Description                                                                  |
+| --------------------- | :--------- | :------: | :------------ | :--------------------------------------------------------------------------- |
+| `images`              | `string[]` |    ✓     | `undefined`   | List of image `src` attributes.                                              |
+| `initialImageIndex`   | `number`   |          | `0`           | Index of image to show first.                                                |
+| `movementSensitivity` | `number`   |          | `20`          | The amount a "drag" has to move before an image changes to next or previous. |
 
 ### Example
 
