@@ -5,6 +5,8 @@ import { useTurntableState } from './hooks';
 import type { ReactImageTurntableFullProps } from './types';
 
 export const CLASS_NAME_IMG = '__react-image-turntable-img';
+export const CLASS_NAME_IMG_PRIMARY = `${CLASS_NAME_IMG}--primary`;
+export const CLASS_NAME_IMG_SECONDARY = `${CLASS_NAME_IMG}--secondary`;
 
 const imgBaseStyle = {
   maxWidth: '100%',
@@ -27,6 +29,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
   const [firstImage, ...otherImages] = images;
   const rootStyle: React.CSSProperties = {
     position: 'relative',
+    userSelect: 'none',
     ...style,
   };
 
@@ -43,7 +46,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
       tabIndex={tabIndex}
     >
       <img
-        className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG}--primary`}
+        className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG_PRIMARY}`}
         src={firstImage}
         alt="Turntable image 1"
         style={imgBaseStyle}
@@ -52,7 +55,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
       {otherImages?.map((src, index) => (
         <img
           key={src}
-          className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG}--secondary`}
+          className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG_SECONDARY}`}
           src={src}
           alt={`Turntable image ${index + 1}`}
           draggable={false}
