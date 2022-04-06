@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { useTurntableState } from './hooks';
 import type { ReactImageTurntableFullProps } from './types';
 
-export const CLASS_NAME_IMG = '__react-image-turntable__img';
+export const CLASS_NAME_IMG = '__react-image-turntable-img';
 
 const imgBaseStyle = {
   maxWidth: '100%',
@@ -43,7 +43,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
       tabIndex={tabIndex}
     >
       <img
-        className={CLASS_NAME_IMG}
+        className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG}--primary`}
         src={firstImage}
         alt="Turntable image 1"
         style={imgBaseStyle}
@@ -52,6 +52,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
       {otherImages?.map((src, index) => (
         <img
           key={src}
+          className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG}--secondary`}
           src={src}
           alt={`Turntable image ${index + 1}`}
           draggable={false}
