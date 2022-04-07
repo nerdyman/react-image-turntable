@@ -46,7 +46,6 @@ importers:
 
   example:
     specifiers:
-      '@types/node': '16'
       '@types/react': ^17.0.43
       '@types/react-dom': ^17.0.14
       '@vitejs/plugin-react': ^1.0.7
@@ -60,7 +59,6 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       react-image-turntable: link:..
     devDependencies:
-      '@types/node': 16.11.26
       '@types/react': 17.0.43
       '@types/react-dom': 17.0.14
       '@vitejs/plugin-react': 1.2.0
@@ -455,10 +453,6 @@ packages:
 
   /@types/minimatch/3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
-    dev: true
-
-  /@types/node/16.11.26:
-    resolution: {integrity: sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==}
     dev: true
 
   /@types/prop-types/15.7.4:
