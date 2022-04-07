@@ -29,6 +29,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
   const [firstImage, ...otherImages] = images;
   const rootStyle: React.CSSProperties = {
     position: 'relative',
+    touchAction: 'none',
     userSelect: 'none',
     ...style,
   };
