@@ -6,6 +6,18 @@ Display a set of images as a draggable 360 degree turntable.
 
 ### [👉 &nbsp; Try the demo &nbsp;👈](https://githubbox.com/nerdyman/react-image-turntable/tree/main/example)
 
+<br />
+
+<a href="https://github.com/nerdyman/react-image-turntable/blob/main/LICENSE">
+  <img src="https://img.shields.io/npm/l/react-image-turntable.svg" alt="License MIT" />
+</a>
+<a href="https://npmjs.com/package/react-image-turntable">
+  <img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=package" alt="NPM package" />
+</a>
+<a href="https://github.com/nerdyman/react-image-turntable/actions?query=workflow%3Aci">
+  <img src="https://img.shields.io/github/workflow/status/nerdyman/react-image-turntable/ci?label=ci" alt="CI Status" />
+</a>
+
 </div>
 
 ## Features
