@@ -39,9 +39,9 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
       {...props}
       ref={ref}
       role="slider"
-      aria-valuemin={0}
-      aria-valuemax={images.length - 1}
-      aria-valuenow={activeImageIndex}
+      aria-valuemin={1}
+      aria-valuemax={images.length}
+      aria-valuenow={activeImageIndex + 1}
       aria-valuetext={`${activeImageIndex + 1} of ${images.length}`}
       style={rootStyle}
       tabIndex={tabIndex}
