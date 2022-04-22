@@ -66,7 +66,7 @@ export const useTurntableState = ({
     };
 
     target?.addEventListener('keydown', handleKeyDown, { capture: true });
-    target?.addEventListener('pointerdown', handlePointerDown, { passive: true });
+    target?.addEventListener('pointerdown', handlePointerDown, { capture: true });
 
     return () => {
       target?.removeEventListener('keydown', handleKeyDown);
