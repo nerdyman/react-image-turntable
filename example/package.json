@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "vite",
-    "dev": "vite",
+    "local": "env IS_LOCAL=true vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

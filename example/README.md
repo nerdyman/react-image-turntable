@@ -1,6 +1,6 @@
 # React Image Turntable Example
 
-Basic example built using Vite.
+Basic example built with Vite.
 
 ## Scripts
 

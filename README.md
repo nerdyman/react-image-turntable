@@ -24,7 +24,7 @@ Display a set of images as a draggable 360 degree turntable.
 
 - Accessible
 - Responsive & fluid with intrinsic sizing
-- [Teeny Tiny](https://bundlephobia.com/result?p=react-image-turntable)
+- Teeny Tiny (less than 1kb gzipped)
 - Zero dependencies
 - Type safe
 
