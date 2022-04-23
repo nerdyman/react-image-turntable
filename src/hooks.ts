@@ -4,28 +4,29 @@ import type { ReactImageTurntableProps } from './types';
 
 interface UseTurntableStateProps
   extends Required<Pick<ReactImageTurntableProps, 'initialImageIndex' | 'movementSensitivity'>> {
+  /** Number of images starting from zero. */
   imagesCount: number;
 }
 
 export const useTurntableState = ({
-  initialImageIndex = 0,
+  initialImageIndex,
   imagesCount,
-  movementSensitivity = 20,
+  movementSensitivity,
 }: UseTurntableStateProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(initialImageIndex);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const target = ref.current;
+    const target = ref.current as HTMLDivElement;
     let prevDragPosition = 0;
     let isDragging = false;
 
     const incrementActiveIndex = () => {
-      setActiveImageIndex((prev) => (prev + 1 > imagesCount - 1 ? 0 : prev + 1));
+      setActiveImageIndex((prev) => (prev + 1 > imagesCount ? 0 : prev + 1));
     };
 
     const decrementActiveIndex = () => {
-      setActiveImageIndex((prev) => (prev - 1 < 0 ? imagesCount - 1 : prev - 1));
+      setActiveImageIndex((prev) => (prev - 1 < 0 ? imagesCount : prev - 1));
     };
 
     const handleKeyDown = (ev: KeyboardEvent) => {
@@ -36,13 +37,6 @@ export const useTurntableState = ({
           incrementActiveIndex();
         }
       }
-    };
-
-    const handlePointerDown = (ev: PointerEvent) => {
-      prevDragPosition = ev.clientX;
-      isDragging = true;
-      window.addEventListener('pointerup', handlePointerUp, { passive: true });
-      window.addEventListener('pointermove', handlePointerMove, { passive: true });
     };
 
     const handlePointerMove = (ev: PointerEvent) => {
@@ -65,12 +59,19 @@ export const useTurntableState = ({
       window.removeEventListener('pointerup', handlePointerUp);
     };
 
-    target?.addEventListener('keydown', handleKeyDown, { capture: true });
-    target?.addEventListener('pointerdown', handlePointerDown, { capture: true });
+    const handlePointerDown = (ev: PointerEvent) => {
+      prevDragPosition = ev.clientX;
+      isDragging = true;
+      window.addEventListener('pointerup', handlePointerUp, { passive: true });
+      window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    };
+
+    target.addEventListener('keydown', handleKeyDown, { capture: true });
+    target.addEventListener('pointerdown', handlePointerDown, { capture: true });
 
     return () => {
-      target?.removeEventListener('keydown', handleKeyDown);
-      target?.removeEventListener('pointerdown', handlePointerDown);
+      target.removeEventListener('keydown', handleKeyDown);
+      target.removeEventListener('pointerdown', handlePointerDown);
       window.removeEventListener('pointerup', handlePointerUp);
       window.removeEventListener('pointermove', handlePointerMove);
     };

@@ -4,8 +4,11 @@ import type { FC } from 'react';
 import { useTurntableState } from './hooks';
 import type { ReactImageTurntableFullProps } from './types';
 
+/** Base `className` for images. */
 export const CLASS_NAME_IMG = '__react-image-turntable-img';
+/** `className` of first rendered image (sets the size of the main component). */
 export const CLASS_NAME_IMG_PRIMARY = `${CLASS_NAME_IMG}--primary`;
+/** `className` of subsequent images. */
 export const CLASS_NAME_IMG_SECONDARY = `${CLASS_NAME_IMG}--secondary`;
 
 const imgBaseStyle = {
@@ -22,7 +25,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
 }) => {
   const { ref, activeImageIndex } = useTurntableState({
     initialImageIndex,
-    imagesCount: images.length,
+    imagesCount: images.length - 1,
     movementSensitivity,
   });
 
@@ -53,17 +56,18 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
         style={imgBaseStyle}
       />
 
-      {otherImages?.map((src, index) => (
+      {/** @NOTE Index is incremented as first index is already destructured above. */}
+      {otherImages.map((src, index) => (
         <img
           key={src}
           className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG_SECONDARY}`}
           src={src}
-          alt={`Turntable image ${index + 1}`}
+          alt={`Turntable image ${index + 2}`}
           draggable={false}
           style={{
             ...imgBaseStyle,
             position: 'absolute',
-            opacity: index === activeImageIndex ? 1 : 0,
+            opacity: index + 1 === activeImageIndex ? 1 : 0,
             left: 0,
             top: 0,
             right: 0,
