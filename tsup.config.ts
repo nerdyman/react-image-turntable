@@ -6,7 +6,7 @@ export default defineConfig((options) => ({
   entry: ['src/index.ts'],
   format: ['esm'],
   minify: !options.watch,
-  target: 'esnext',
+  target: 'es2021',
   sourcemap: true,
   splitting: false,
 }));
