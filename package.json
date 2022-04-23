@@ -12,7 +12,10 @@
   "packageManager": "pnpm@6.32.3",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "bootstrap": "corepack disable && corepack enable && pnpm i --frozen-lockfile",
     "dx": "npm run bootstrap && pnpm exec husky install",

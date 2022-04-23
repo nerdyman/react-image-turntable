@@ -22,7 +22,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es2021"
+    "target": "esnext"
   },
   "exclude": ["node_modules", "**/__tests__/*"]
 }
