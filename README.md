@@ -65,6 +65,17 @@ export const Turntable = () => <ReactImageTurntable images={images} />;
 
 Also see the [example code](./example) in the repo.
 
+### Custom Styling
+
+The library uses the first image passed to intrinsically size the component, it also exports following
+`className`s to apply custom styles when needed:
+
+| `className`                | Purpose                                                              |
+| -------------------------- | -------------------------------------------------------------------- |
+| `CLASS_NAME_IMG`           | Base class for images.                                               |
+| `CLASS_NAME_IMG_PRIMARY`   | Class of first rendered image (sets the size of the main component). |
+| `CLASS_NAME_IMG_SECONDARY` | Class of subsequent images.                                          |
+
 ## Contributing
 
 See the [contributing guide](./CONTRIBUTING.md) to get started.

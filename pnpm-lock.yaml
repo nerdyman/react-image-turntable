@@ -49,12 +49,14 @@ importers:
       '@types/react': ^17.0.43
       '@types/react-dom': ^17.0.14
       '@vitejs/plugin-react': ^1.0.7
+      pepjs: ^0.5.3
       react: ^17.0.2
       react-dom: ^17.0.2
       react-image-turntable: next
       typescript: ^4.6.3
       vite: ^2.8.0
     dependencies:
+      pepjs: 0.5.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-image-turntable: link:..
@@ -2513,6 +2515,10 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
     dev: true
+
+  /pepjs/0.5.3:
+    resolution: {integrity: sha512-5yHVB9OHqKd9fr/OIsn8ss0NgThQ9buaqrEuwr9Or5YjPp6h+WTDKWZI+xZLaBGZCtODTnFtlSHNmhFsq67THg==}
+    dev: false
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
