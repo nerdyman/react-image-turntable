@@ -23,7 +23,6 @@ export const useTurntableState = ({
   useEffect(() => {
     const target = ref.current as HTMLDivElement;
     let prevDragPosition = 0;
-    let isDragging = false;
 
     const incrementActiveIndex = () => {
       setActiveImageIndex((prev) => (prev + 1 > imagesCount ? 0 : prev + 1));
@@ -47,20 +46,20 @@ export const useTurntableState = ({
       if (distanceDragged <= -movementSensitivity) {
         prevDragPosition = prevDragPosition + movementSensitivity;
         incrementActiveIndex();
-      } else if (distanceDragged >= movementSensitivity) {
+      }
+
+      if (distanceDragged >= movementSensitivity) {
         prevDragPosition = prevDragPosition - movementSensitivity;
         decrementActiveIndex();
       }
     };
 
     const handlePointerUp = () => {
-      isDragging = false;
       window.removeEventListener('pointermove', handlePointerMove);
       window.removeEventListener('pointerup', handlePointerUp);
     };
 
     const handlePointerDown = (ev: PointerEvent) => {
-      isDragging = true;
       prevDragPosition = ev.clientX;
       window.addEventListener('pointermove', handlePointerMove, { passive: true });
       window.addEventListener('pointerup', handlePointerUp, { passive: true });
