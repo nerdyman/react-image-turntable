@@ -17,6 +17,10 @@ export const useTurntableState = ({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setActiveImageIndex(initialImageIndex);
+  }, [initialImageIndex]);
+
+  useEffect(() => {
     const target = ref.current as HTMLDivElement;
     let prevDragPosition = 0;
     let isDragging = false;
@@ -60,10 +64,10 @@ export const useTurntableState = ({
     };
 
     const handlePointerDown = (ev: PointerEvent) => {
-      prevDragPosition = ev.clientX;
       isDragging = true;
-      window.addEventListener('pointerup', handlePointerUp, { passive: true });
+      prevDragPosition = ev.clientX;
       window.addEventListener('pointermove', handlePointerMove, { passive: true });
+      window.addEventListener('pointerup', handlePointerUp, { passive: true });
     };
 
     target.addEventListener('keydown', handleKeyDown, { capture: true });
