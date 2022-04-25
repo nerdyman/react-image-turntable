@@ -31,8 +31,13 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      # - name: Test
-      #   run: pnpm test --ci --coverage --maxWorkers=2
+      - name: Test
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
+        with:
+          coverageCommand: pnpx playwright install && pnpm run test
+          debug: true
 
       - name: Build
         run: pnpm build
