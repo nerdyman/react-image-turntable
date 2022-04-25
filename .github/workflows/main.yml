@@ -36,7 +36,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
         with:
-          coverageCommand: npx playwright install && pnpm run test
+          coverageCommand: pnpm run test
           debug: true
 
       - name: Build
