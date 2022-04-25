@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import App, { images as baseImages } from './App';
 
@@ -8,12 +8,16 @@ import App, { images as baseImages } from './App';
  */
 export const Test = () => {
   const [images, setImages] = useState(baseImages);
-  const [initialImageIndex, setInitialImageIndex] = useState(0);
+  const [initialImageIndex, setInitialImageIndex] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    setInitialImageIndex(0);
+  }, []);
 
   return (
     <>
       <App images={images} initialImageIndex={initialImageIndex} />
-      <div>
+      <div style={{ display: 'flex', gap: '0.5rem' }}>
         <button
           onClick={() =>
             setImages((prev) =>
@@ -25,7 +29,7 @@ export const Test = () => {
         </button>
 
         <button
-          onClick={() => setInitialImageIndex((prev) => (prev === 0 ? images.length - 1 : 0))}
+          onClick={() => setInitialImageIndex((prev) => (prev === 0 ? images.length - 1 : 0) || 0)}
         >
           Toggle initial index
         </button>

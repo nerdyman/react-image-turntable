@@ -18,7 +18,7 @@ test.describe('Example Repo', () => {
   });
 
   test.afterEach(async ({ page }) => {
-    await checkA11y(page, undefined);
+    await checkA11y(page);
   });
 
   test('Should generate correct aria attributes', async ({ page }) => {

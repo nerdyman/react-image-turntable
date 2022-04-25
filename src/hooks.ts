@@ -34,26 +34,22 @@ export const useTurntableState = ({
     };
 
     const handleKeyDown = (ev: KeyboardEvent) => {
-      if (document.activeElement === ref.current) {
-        if (ev.key === 'ArrowLeft') {
-          decrementActiveIndex();
-        } else if (ev.key === 'ArrowRight') {
-          incrementActiveIndex();
-        }
+      if (ev.key === 'ArrowLeft') {
+        decrementActiveIndex();
+      } else if (ev.key === 'ArrowRight') {
+        incrementActiveIndex();
       }
     };
 
     const handlePointerMove = (ev: PointerEvent) => {
-      if (isDragging) {
-        const distanceDragged = prevDragPosition - ev.clientX;
+      const distanceDragged = prevDragPosition - ev.clientX;
 
-        if (distanceDragged <= -movementSensitivity) {
-          incrementActiveIndex();
-          prevDragPosition = prevDragPosition + movementSensitivity;
-        } else if (distanceDragged >= movementSensitivity) {
-          prevDragPosition = prevDragPosition - movementSensitivity;
-          decrementActiveIndex();
-        }
+      if (distanceDragged <= -movementSensitivity) {
+        prevDragPosition = prevDragPosition + movementSensitivity;
+        incrementActiveIndex();
+      } else if (distanceDragged >= movementSensitivity) {
+        prevDragPosition = prevDragPosition - movementSensitivity;
+        decrementActiveIndex();
       }
     };
 
