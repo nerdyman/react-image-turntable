@@ -31,13 +31,13 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Test
+      - name: Test:Execute
+        run: pnpx playwright install pnpm run test
+
+      - name: Test:Upload
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
-        with:
-          coverageCommand: pnpm run test
-          debug: true
 
       - name: Build
         run: pnpm build
