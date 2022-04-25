@@ -7,15 +7,14 @@
       "jsx": true
     }
   },
-  "plugins": ["testing-library", "@typescript-eslint", "react", "testing-library"],
+  "plugins": ["@typescript-eslint", "react"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:testing-library/react"
+    "plugin:@typescript-eslint/recommended"
   ],
   "env": {
     "browser": true,
@@ -45,11 +44,5 @@
       }
     ],
     "@typescript-eslint/no-use-before-define": "warn"
-  },
-  "overrides": [
-    {
-      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      "extends": ["plugin:testing-library/react"]
-    }
-  ]
+  }
 }

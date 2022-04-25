@@ -39,6 +39,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
 
   return (
     <div
+      aria-label="Image turntable"
       {...props}
       ref={ref}
       role="slider"

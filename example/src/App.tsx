@@ -1,6 +1,6 @@
-import { ReactImageTurntable } from 'react-image-turntable';
+import { ReactImageTurntable, ReactImageTurntableProps } from 'react-image-turntable';
 
-const images = [
+export const images = [
   'https://static2.zerolight.com/web/df3a45687480167bb4451d79c02f67bd/img/2d-explorer/bmw/P0C1G__S022B__FX3A9/P0C1G__S022B__FX3A9__Spin_01.jpg?v=1',
   'https://static2.zerolight.com/web/df3a45687480167bb4451d79c02f67bd/img/2d-explorer/bmw/P0C1G__S022B__FX3A9/P0C1G__S022B__FX3A9__Spin_02.jpg?v=1',
   'https://static2.zerolight.com/web/df3a45687480167bb4451d79c02f67bd/img/2d-explorer/bmw/P0C1G__S022B__FX3A9/P0C1G__S022B__FX3A9__Spin_03.jpg?v=1',
@@ -39,8 +39,8 @@ const images = [
   'https://static2.zerolight.com/web/df3a45687480167bb4451d79c02f67bd/img/2d-explorer/bmw/P0C1G__S022B__FX3A9/P0C1G__S022B__FX3A9__Spin_36.jpg?v=1',
 ];
 
-function App() {
-  return <ReactImageTurntable images={images} />;
+function App(props: Partial<ReactImageTurntableProps>) {
+  return <ReactImageTurntable images={images} {...props} />;
 }
 
 export default App;
