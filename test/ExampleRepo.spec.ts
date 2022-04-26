@@ -7,7 +7,6 @@ test.describe('Example Repo', () => {
   const getComponentRoot = (page: Page) => page.locator('[role="slider"]');
 
   test.beforeEach(async ({ page }) => {
-    await page.reload();
     await page.goto('http://localhost:3000/?debug');
 
     injectAxe(page);
