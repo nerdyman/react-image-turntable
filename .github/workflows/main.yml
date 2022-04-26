@@ -32,7 +32,7 @@ jobs:
         run: pnpm lint
 
       - name: Test:Execute
-        run: pnpx playwright install-deps chromium && pnpx playwright install && pnpm run test
+        run: pnpx playwright install-deps chromium && pnpx playwright install chromium && DEBUG=pw:api pnpm run test
 
       - name: Test:Upload
         uses: paambaati/codeclimate-action@v3.0.0
