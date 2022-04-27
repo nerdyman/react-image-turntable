@@ -94,7 +94,7 @@ test.describe('Example Repo', () => {
 
     // Should **not** navigate when mouse up is fired.
     await page.mouse.up();
-    await page.mouse.move(512 + 40, 200);
+    await page.mouse.move(512 + 60, 200);
     await expect(component).toHaveAttribute('aria-valuenow', '3');
     await page.mouse.down();
 

@@ -7,6 +7,7 @@ const config: PlaywrightTestConfig = {
   outputDir: './test/results',
   webServer: {
     command: 'pnpm run dev',
+    reuseExistingServer: !process.env.CI,
     url: 'http://localhost:3000',
     env: {
       NODE_ENV: 'test',
