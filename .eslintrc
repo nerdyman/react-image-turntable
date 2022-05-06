@@ -27,8 +27,9 @@
     "linebreak-style": ["error", "unix"],
     "lines-around-comment": 0,
     "no-confusing-arrow": 0,
-    "no-console": ["warn", { "allow": ["warn"] }],
-    "no-debugger": 0,
+    "no-alert": "error",
+    "no-console": "error",
+    "no-debugger": "error",
     "no-shadow": "warn",
 
     "react/jsx-indent": 0,
