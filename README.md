@@ -4,6 +4,8 @@
 
 Display a set of images as a draggable 360 degree turntable.
 
+![React Image Turntable with rotating car](https://raw.githubusercontent.com/nerdyman/stuff/main/libs/react-image-turntable/capture.gif)
+
 ### [👉 &nbsp; Try the demo &nbsp;👈](https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598)
 
 <br />
