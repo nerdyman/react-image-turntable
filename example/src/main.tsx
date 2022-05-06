@@ -1,14 +1,11 @@
 import 'pepjs';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import './index.css';
 import App from './App';
 import { Test } from './Test';
 
 const isDebug = new URLSearchParams(window.location.search).get('debug') !== null;
-
-ReactDOM.render(
-  <React.StrictMode>{isDebug ? <Test /> : <App />}</React.StrictMode>,
-  document.getElementById('root'),
-);
+const root = createRoot(document.getElementById('root') as HTMLElement);
+root.render(<React.StrictMode>{isDebug ? <Test /> : <App />}</React.StrictMode>);
