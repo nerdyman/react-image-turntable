@@ -4,18 +4,21 @@
 
 Display a set of images as a draggable 360 degree turntable.
 
-### [👉 &nbsp; Try the demo &nbsp;👈](https://githubbox.com/nerdyman/react-image-turntable/tree/main/example)
+### [👉 &nbsp; Try the demo &nbsp;👈](https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598)
 
 <br />
 
+<a href="https://npmjs.com/package/react-image-turntable">
+  <img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=version" alt="NPM package" />
+</a>
 <a href="https://github.com/nerdyman/react-image-turntable/blob/main/LICENSE">
   <img src="https://img.shields.io/npm/l/react-image-turntable.svg" alt="License MIT" />
 </a>
-<a href="https://npmjs.com/package/react-image-turntable">
-  <img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=package" alt="NPM package" />
-</a>
 <a href="https://github.com/nerdyman/react-image-turntable/actions?query=workflow%3Aci">
   <img src="https://img.shields.io/github/workflow/status/nerdyman/react-image-turntable/ci?label=ci" alt="CI Status" />
+</a>
+<a href="https://codeclimate.com/github/nerdyman/react-image-turntable/test_coverage">
+  <img src="https://img.shields.io/codeclimate/coverage/nerdyman/react-image-turntable" />
 </a>
 
 </div>
@@ -24,6 +27,7 @@ Display a set of images as a draggable 360 degree turntable.
 
 - Accessible
 - Responsive & fluid with intrinsic sizing
+- Supports keyboard navigation
 - Teeny Tiny (less than 1kb gzipped)
 - Zero dependencies
 - Type safe
@@ -68,19 +72,25 @@ Also see the [example code](./example) in the repo.
 ### Custom Styling
 
 The library uses the first image passed to intrinsically size the component, it also exports following
-`className`s to apply custom styles when needed:
+`className`s to apply custom styles when needed.
 
 | `className`                | Purpose                                                              |
-| -------------------------- | -------------------------------------------------------------------- |
+| :------------------------- | :------------------------------------------------------------------- |
 | `CLASS_NAME_IMG`           | Base class for images.                                               |
 | `CLASS_NAME_IMG_PRIMARY`   | Class of first rendered image (sets the size of the main component). |
 | `CLASS_NAME_IMG_SECONDARY` | Class of subsequent images.                                          |
+
+---
 
 ## Contributing
 
 See the [contributing guide](./CONTRIBUTING.md) to get started.
 
 ---
+
+## Browser Support
+
+The library is built for `ES2021`.
 
 ## Notes
 
