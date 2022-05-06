@@ -35,6 +35,6 @@ jobs:
         run: npx playwright install-deps chromium && pnpx playwright install chromium && DEBUG=pw:api pnpm run test
 
       - name: Test:Upload
-        uses: paambaati/codeclimate-action@v2.7.4
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
