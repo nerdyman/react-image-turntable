@@ -18,17 +18,16 @@
   ],
   "scripts": {
     "bootstrap": "corepack disable && corepack enable && pnpm i --frozen-lockfile",
+    "build": "tsup",
     "dev": "pnpm -r --stream run start",
     "dx": "npm run bootstrap && pnpm exec husky install",
-    "start": "tsup --watch",
-    "build": "tsup",
-    "test": "rm -rf {.nyc_output,coverage} && playwright test && pnpm nyc report --reporter=lcov",
-    "test:debug": "env PWDEBUG=1 NODE_ENV=test playwright test && pnpm nyc report --reporter=lcov",
     "lint": "eslint . && prettier --check .",
     "prepare": "husky install",
-    "prepublish": "pnpm run build",
+    "release": "pnpm run build && np",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "start": "tsup --watch",
+    "test": "rm -rf {.nyc_output,coverage} && playwright test && pnpm nyc report --reporter=lcov",
+    "test:debug": "env PWDEBUG=1 NODE_ENV=test playwright test && pnpm nyc report --reporter=lcov"
   },
   "husky": {
     "hooks": {
@@ -42,6 +41,9 @@
       "pnpm test --bail"
     ]
   },
+  "np": {
+    "pnpm": true
+  },
   "prettier": {
     "printWidth": 100,
     "semi": true,
@@ -51,7 +53,7 @@
   "size-limit": [
     {
       "path": "dist/index.mjs",
-      "limit": "2 KB"
+      "limit": "1.25 KB"
     }
   ],
   "peerDependencies": {
@@ -76,6 +78,7 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
+    "np": "^7.6.1",
     "nyc": "^15.1.0",
     "playwright-core": "^1.21.1",
     "prettier": "^2.6.2",
