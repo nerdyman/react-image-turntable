@@ -5,8 +5,10 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 2 : 0,
   testDir: './test',
   outputDir: './test/results',
+  reporter: 'list',
   webServer: {
-    command: 'pnpm run dev',
+    command:
+      'pnpm run build && pnpm run build --filter="./example" && pnpm run preview --filter="./example"',
     reuseExistingServer: !process.env.CI,
     url: 'http://localhost:3000',
     env: {
