@@ -23,7 +23,7 @@
     "dx": "npm run bootstrap && pnpm exec husky install",
     "lint": "eslint . && prettier --check .",
     "prepare": "husky install",
-    "release": "pnpm run build && np",
+    "release": "pnpm run build && np --no-tests --no-cleanup",
     "size": "size-limit",
     "start": "tsup --watch",
     "test": "rm -rf {.nyc_output,coverage} && playwright test && pnpm nyc report --reporter=lcov",
