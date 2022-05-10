@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FC } from 'react';
+import type { CSSProperties, FC } from 'react';
 
 import { useTurntableState } from './hooks';
 import type { ReactImageTurntableFullProps } from './types';
@@ -29,7 +29,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
     movementSensitivity,
   });
 
-  const rootStyle: React.CSSProperties = {
+  const rootStyle: CSSProperties = {
     position: 'relative',
     touchAction: 'none',
     userSelect: 'none',
