@@ -37,8 +37,6 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
     ...style,
   };
 
-  console.log(`!!`, activeImageIndex);
-
   return (
     <div
       aria-label="Image turntable"
