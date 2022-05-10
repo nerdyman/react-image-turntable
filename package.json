@@ -20,7 +20,7 @@
     "bootstrap": "corepack disable && corepack enable && pnpm i --frozen-lockfile",
     "build": "tsup",
     "dev": "pnpm -r --stream run start",
-    "dx": "npm run bootstrap && pnpm exec husky install",
+    "dx": "npm run bootstrap && pnpm exec husky install && pnpm run prepare",
     "lint": "eslint . && prettier --check .",
     "prepare": "husky install",
     "release": "pnpm run build && np --no-tests --no-cleanup",
@@ -28,11 +28,6 @@
     "start": "tsup --watch",
     "test": "rm -rf {.nyc_output,coverage} && playwright test && pnpm nyc report --reporter=lcov",
     "test:debug": "env PWDEBUG=1 NODE_ENV=test playwright test && pnpm nyc report --reporter=lcov"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -53,7 +48,7 @@
   "size-limit": [
     {
       "path": "dist/index.mjs",
-      "limit": "1.25 KB"
+      "limit": "1.2 KB"
     }
   ],
   "peerDependencies": {
