@@ -6,7 +6,7 @@ import { checkA11y, configureAxe, injectAxe } from 'axe-playwright';
 test.describe('Example Repo', () => {
   const getComponentRoot = (page: Page) => page.locator('[role="slider"]');
 
-  const beforeEach = async (page: Page) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?debug');
     await injectAxe(page);
 
@@ -15,10 +15,9 @@ test.describe('Example Repo', () => {
     });
 
     await checkA11y(page);
-  };
+  });
 
   test('Should generate correct aria attributes', async ({ page }) => {
-    await beforeEach(page);
     const component = getComponentRoot(page);
 
     // Check initial values on mount.
@@ -40,8 +39,6 @@ test.describe('Example Repo', () => {
   });
 
   test('Should navigate on keyboard arrow left and arrow right when focused', async ({ page }) => {
-    await beforeEach(page);
-
     const component = getComponentRoot(page);
 
     // Should be focusable by tabbing.
@@ -76,8 +73,6 @@ test.describe('Example Repo', () => {
   });
 
   test('Should navigate on pointer drag', async ({ page }) => {
-    await beforeEach(page);
-
     const component = getComponentRoot(page);
 
     await component.click();
