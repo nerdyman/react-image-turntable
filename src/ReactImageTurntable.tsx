@@ -37,6 +37,8 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
     ...style,
   };
 
+  console.log(`!!`, activeImageIndex);
+
   return (
     <div
       aria-label="Image turntable"
@@ -54,7 +56,10 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
         className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG_PRIMARY}`}
         src={firstImage}
         alt="Turntable image 1"
-        style={imgBaseStyle}
+        style={{
+          ...imgBaseStyle,
+          opacity: activeImageIndex === 0 ? 1 : 0,
+        }}
       />
 
       {/** @NOTE Index is incremented as first index is already destructured above. */}
