@@ -29,7 +29,6 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
     movementSensitivity,
   });
 
-  const [firstImage, ...otherImages] = images;
   const rootStyle: React.CSSProperties = {
     position: 'relative',
     touchAction: 'none',
@@ -50,28 +49,19 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
       style={rootStyle}
       tabIndex={tabIndex}
     >
-      <img
-        className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG_PRIMARY}`}
-        src={firstImage}
-        alt="Turntable image 1"
-        style={{
-          ...imgBaseStyle,
-          opacity: activeImageIndex === 0 ? 1 : 0,
-        }}
-      />
-
-      {/** @NOTE Index is incremented as first index is already destructured above. */}
-      {otherImages.map((src, index) => (
+      {images.map((src, index) => (
         <img
           key={src}
-          className={`${CLASS_NAME_IMG} ${CLASS_NAME_IMG_SECONDARY}`}
+          className={`${CLASS_NAME_IMG} ${
+            index === 0 ? CLASS_NAME_IMG_PRIMARY : CLASS_NAME_IMG_SECONDARY
+          }`}
           src={src}
-          alt={`Turntable image ${index + 2}`}
+          alt={`Turntable image ${index + 1}`}
           draggable={false}
           style={{
             ...imgBaseStyle,
-            position: 'absolute',
-            opacity: index + 1 === activeImageIndex ? 1 : 0,
+            position: index === 0 ? undefined : 'absolute',
+            opacity: index === activeImageIndex ? 1 : 0,
             left: 0,
             top: 0,
             right: 0,
