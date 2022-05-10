@@ -7,8 +7,7 @@ const config: PlaywrightTestConfig = {
   outputDir: './test/results',
   reporter: 'list',
   webServer: {
-    command:
-      'pnpm run build && pnpm run build --filter="./example" && pnpm run preview --filter="./example"',
+    command: 'pnpm run build && pnpm run start --filter="./example"',
     reuseExistingServer: !process.env.CI,
     url: 'http://localhost:3000',
     env: {
