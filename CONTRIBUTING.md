@@ -14,17 +14,21 @@ npm run dx
 Then run the following commands in separate terminals:
 
 ```sh
-# Start the library dev build
+# Run both the library dev build and the `example` repo dev server
+pnpm run dev
+
+# Or run them separately
+## Start the library dev build
 pnpm run start
-# Start the Example codebase dev build
+## Start the `example` codebase dev build
 pnpm run --prefix example start
 ```
 
 ## Standards
 
 - Commits use the [Conventional Commits](https://conventionalcommits.org/) standard
-- pnpm is used to manage dependencies
-- nvm is used to manage Node.js versions
+- pnpm to manage dependencies
+- nvm to manage Node.js versions
 - Prettier & EditorConfig for code style
 - ESLint for quality
 - Husky for Git hooks
