@@ -1,5 +1,5 @@
 import React from 'react';
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, FC, MouseEvent } from 'react';
 
 import { useTurntableState } from './hooks';
 import type { ReactImageTurntableFullProps } from './types';
@@ -13,6 +13,15 @@ export const CLASS_NAME_IMG_SECONDARY = `${CLASS_NAME_IMG}--secondary`;
 
 const imgBaseStyle = {
   maxWidth: '100%',
+};
+
+/**
+ * Firefox desktop tries to drag the image on `mousedown` + `mousemove` so we need to prevent it
+ * then mimic the default behavior of the browser.
+ */
+const handleImgDragStart = (ev: MouseEvent<HTMLImageElement>) => {
+  ev.preventDefault();
+  (ev.currentTarget.parentElement as HTMLElement).focus();
 };
 
 export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
@@ -58,6 +67,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
           src={src}
           alt={`Turntable image ${index + 1}`}
           draggable={false}
+          onDragStart={handleImgDragStart}
           style={{
             ...imgBaseStyle,
             position: index === 0 ? undefined : 'absolute',
