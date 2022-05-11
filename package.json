@@ -35,13 +35,13 @@
     "size": "size-limit",
     "start": "tsup --watch",
     "test": "rm -rf {.nyc_output,coverage} && playwright test && pnpm nyc report --reporter=lcov",
+    "test:no-coverage": "playwright test",
     "test:debug": "env PWDEBUG=1 NODE_ENV=test playwright test && pnpm nyc report --reporter=lcov"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "pretty-quick --staged",
-      "eslint --fix",
-      "pnpm test --bail"
+      "eslint --fix"
     ]
   },
   "np": {
