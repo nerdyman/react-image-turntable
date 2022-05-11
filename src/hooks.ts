@@ -60,6 +60,7 @@ export const useTurntableState = ({
     };
 
     const handlePointerDown = (ev: PointerEvent) => {
+      ev.preventDefault();
       prevDragPosition = ev.clientX;
       window.addEventListener('pointermove', handlePointerMove, { passive: true });
       window.addEventListener('pointerup', handlePointerUp, { passive: true });
