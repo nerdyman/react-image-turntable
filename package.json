@@ -1,8 +1,15 @@
 {
   "name": "react-image-turntable",
   "description": "Display a set of images as a draggable 360 degree turntable.",
-  "keywords": ["react", "image", "360", "turntable", "rotator", "slider"],
-  "version": "3.0.1",
+  "keywords": [
+    "react",
+    "image",
+    "360",
+    "turntable",
+    "rotator",
+    "slider"
+  ],
+  "version": "3.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nerdyman/react-image-turntable.git"
