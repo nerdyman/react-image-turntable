@@ -21,7 +21,6 @@ const imgBaseStyle = {
  */
 const handleImgDragStart = (ev: MouseEvent<HTMLImageElement>) => {
   ev.preventDefault();
-  (ev.currentTarget.parentElement as HTMLElement).focus();
 };
 
 export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
