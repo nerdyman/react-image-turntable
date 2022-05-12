@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ReactImageTurntable, ReactImageTurntableProps } from 'react-image-turntable';
 
 export const images = [
@@ -41,18 +40,7 @@ export const images = [
 ];
 
 function App(props: Partial<ReactImageTurntableProps>) {
-  const [activeIndex, setActiveIndex] = useState(1);
-
-  const handleOnIndexChange = (index: number) => {
-    setActiveIndex(index);
-  };
-
-  return (
-    <>
-      <p>Current index is: {activeIndex}</p>
-      <ReactImageTurntable onIndexChange={handleOnIndexChange} images={images} {...props} />;
-    </>
-  );
+  return <ReactImageTurntable images={images} {...props} />;
 }
 
 export default App;
