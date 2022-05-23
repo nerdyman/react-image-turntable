@@ -8,7 +8,7 @@ Display a set of images as a draggable 360 degree turntable.
 
 <a href="https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598" target="_blank" rel="noopener, noreferrer">
 
-### 👉 &nbsp; Try the demo &nbsp;👈
+### [👉 &nbsp; Try the demo &nbsp;👈](https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598)
 
 </a>
 
