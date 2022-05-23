@@ -7,6 +7,8 @@ export interface ReactImageTurntableProps {
   initialImageIndex?: number;
   /** The amount a "drag" has to move before an image changes to next or previous. */
   movementSensitivity?: number;
+  /** a callback function that triggers whenever the active index changes */
+  onIndexChange?: (index: number) => void;
 }
 
 /** Base props *and* all available HTML element props. */
