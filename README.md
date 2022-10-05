@@ -4,13 +4,13 @@
 
 Display a set of images as a draggable 360 degree turntable.
 
+[![React Image Turntable with rotating car](https://raw.githubusercontent.com/nerdyman/stuff/main/libs/react-image-turntable/capture.gif)](https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598)
+
 <a href="https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598" target="_blank" rel="noopener, noreferrer">
 
-![React Image Turntable with rotating car](https://raw.githubusercontent.com/nerdyman/stuff/main/libs/react-image-turntable/capture.gif)
+### [👉 &nbsp; Try the demo &nbsp;👈](https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598)
 
 </a>
-
-### [👉 &nbsp; Try the demo &nbsp;👈](https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598)
 
 <br />
 
@@ -20,7 +20,7 @@ Display a set of images as a draggable 360 degree turntable.
 <a href="https://github.com/nerdyman/react-image-turntable/blob/main/LICENSE">
   <img src="https://img.shields.io/npm/l/react-image-turntable.svg" alt="License MIT" />
 </a>
-<a href="https://github.com/nerdyman/react-image-turntable/actions?query=workflow%3Aci">
+<a href="https://github.com/nerdyman/react-image-turntable/actions?query=branch%3Amain+workflow%3Aci++">
   <img src="https://img.shields.io/github/workflow/status/nerdyman/react-image-turntable/ci?label=ci" alt="CI Status" />
 </a>
 <a href="https://codeclimate.com/github/nerdyman/react-image-turntable/test_coverage">
