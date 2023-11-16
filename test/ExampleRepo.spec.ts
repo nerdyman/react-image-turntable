@@ -1,7 +1,6 @@
 import type { Page } from '@playwright/test';
 
-// import { test, expect } from './baseFixtures';
-import { test, expect } from '@playwright/test';
+import { test, expect } from './baseFixtures';
 import { checkA11y, configureAxe, injectAxe } from 'axe-playwright';
 
 test.describe('Example Repo', () => {
