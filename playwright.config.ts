@@ -1,16 +1,24 @@
+/* eslint no-console: 0 */
 import { devices } from '@playwright/test';
 import type { PlaywrightTestConfig } from '@playwright/test';
 
+const IS_CI = !!process.env.CI;
+const PORT = !isNaN(Number(process.env.PORT)) ? Number(process.env.PORT) : 3000;
+
+process.env.PORT = String(PORT);
+
+console.info('[playwright.config]', { IS_CI, PORT });
+
 const config: PlaywrightTestConfig = {
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  forbidOnly: IS_CI,
+  retries: IS_CI ? 2 : 0,
   testDir: './test',
   outputDir: './test/results',
   reporter: 'list',
   webServer: {
-    command: 'pnpm run build && pnpm run start --filter="./example"',
-    reuseExistingServer: !process.env.CI,
-    url: 'http://localhost:3000',
+    command: 'pnpm run build && pnpm --filter "react-image-turntable-example" run start',
+    reuseExistingServer: !IS_CI,
+    url: `http://localhost:${PORT}`,
     env: {
       NODE_ENV: 'test',
       USE_BABEL_PLUGIN_ISTANBUL: '1',

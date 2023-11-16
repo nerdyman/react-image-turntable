@@ -14,18 +14,10 @@ Display a set of images as a draggable 360 degree turntable.
 
 <br />
 
-<a href="https://npmjs.com/package/react-image-turntable">
-  <img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=version" alt="NPM package" />
-</a>
-<a href="https://github.com/nerdyman/react-image-turntable/blob/main/LICENSE">
-  <img src="https://img.shields.io/npm/l/react-image-turntable.svg" alt="License MIT" />
-</a>
-<a href="https://github.com/nerdyman/react-image-turntable/actions?query=branch%3Amain+workflow%3Aci++">
-  <img src="https://img.shields.io/github/workflow/status/nerdyman/react-image-turntable/ci?label=ci" alt="CI Status" />
-</a>
-<a href="https://codeclimate.com/github/nerdyman/react-image-turntable/test_coverage">
-  <img src="https://img.shields.io/codeclimate/coverage/nerdyman/react-image-turntable" />
-</a>
+<a href="https://npmjs.com/package/react-image-turntable"><img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=version" alt="NPM package" /></a>
+<a href="https://github.com/nerdyman/react-image-turntable/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/react-image-turntable.svg" alt="License MIT" /></a>
+<a href="https://github.com/nerdyman/react-compare-slider/actions?query=workflow%3Abuild"><img alt="GitHub CI status" src="https://img.shields.io/github/actions/workflow/status/nerdyman/react-image-turntable/main.yml" /></a>
+<a href="https://codeclimate.com/github/nerdyman/react-image-turntable/test_coverage"><img src="https://img.shields.io/codeclimate/coverage/nerdyman/react-image-turntable" /></a>
 
 </div>
 

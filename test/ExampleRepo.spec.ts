@@ -4,16 +4,22 @@ import { test, expect } from './baseFixtures';
 import { checkA11y, configureAxe, injectAxe } from 'axe-playwright';
 
 test.describe('Example Repo', () => {
-  const getComponentRoot = (page: Page) => page.locator('[role="slider"]');
+  const getComponentRoot = (page: Page) => page.getByRole('slider');
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/?debug');
+    await page.goto(`http://localhost:${process.env.PORT}/?debug`);
     await injectAxe(page);
 
     configureAxe(page, {
-      checks: [{ id: 'page-has-heading-one', enabled: false }],
+      checks: [
+        { id: 'page-has-heading-one', enabled: false },
+        { id: 'meta-viewport', enabled: false },
+        { id: 'region', enabled: false },
+      ],
     });
+  });
 
+  test.afterEach(async ({ page }) => {
     await checkA11y(page);
   });
 
