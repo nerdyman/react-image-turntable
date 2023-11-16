@@ -7,6 +7,12 @@ export interface ReactImageTurntableProps {
   initialImageIndex?: number;
   /** The amount a "drag" has to move before an image changes to next or previous. */
   movementSensitivity?: number;
+  autoRotate?: {
+    /** Automatically rotate the turntable. */
+    enabled: boolean;
+    /** The speed (in ms) at which the turntable rotates. */
+    speed?: number;
+  };
 }
 
 /** Base props *and* all available HTML element props. */
