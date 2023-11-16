@@ -48,7 +48,8 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
 
-      - uses: preactjs/compressed-size-action@v2
-        with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          build-script: 'build'
+      # Disabled until https://github.com/pnpm/pnpm/issues/6424 is resolved.
+      # - uses: preactjs/compressed-size-action@v2
+      #   with:
+      #     repo-token: '${{ secrets.GITHUB_TOKEN }}'
+      #     build-script: 'build'
