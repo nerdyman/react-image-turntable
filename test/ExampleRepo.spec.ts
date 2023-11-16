@@ -74,33 +74,44 @@ test.describe('Example Repo', () => {
 
   test('Should navigate on pointer drag', async ({ page }) => {
     const component = getComponentRoot(page);
+    const initialValueNow = await component.getAttribute('aria-valuenow').then(Number);
 
     await component.click();
     await expect(component).toBeFocused();
+
+    page.waitForTimeout(200);
+
+    // Should automatically rotate until mouse down is fired.
+    const lastValueNow = await component.getAttribute('aria-valuenow').then(Number);
+    await expect(lastValueNow).toBeGreaterThan(initialValueNow);
 
     // Fire initial click to set dragging origin.
     await page.mouse.move(512, 200);
     await page.mouse.down();
 
+    page.waitForTimeout(200);
+    await expect(component).toHaveAttribute('aria-valuenow', lastValueNow.toString());
+
     // Should navigate forwards when dragging right while mouse is down.
-    await expect(component).toHaveAttribute('aria-valuenow', '1');
     await page.mouse.move(512 + 20, 200);
-    await expect(component).toHaveAttribute('aria-valuenow', '2');
+    await expect(component).toHaveAttribute('aria-valuenow', (lastValueNow + 1).toString());
     await page.mouse.move(512 + 40, 200);
-    await expect(component).toHaveAttribute('aria-valuenow', '3');
+    await expect(component).toHaveAttribute('aria-valuenow', (lastValueNow + 2).toString());
 
     // Should **not** navigate when mouse up is fired.
     await page.mouse.up();
     await page.mouse.move(512 + 60, 200);
-    await expect(component).toHaveAttribute('aria-valuenow', '3');
+    await expect(component).toHaveAttribute('aria-valuenow', (lastValueNow + 2).toString());
     await page.mouse.down();
 
     // Should navigate backwards when dragging right while mouse is down.
     await page.mouse.move(512 + 20, 200);
-    await expect(component).toHaveAttribute('aria-valuenow', '2');
+    await expect(component).toHaveAttribute('aria-valuenow', (lastValueNow + 1).toString());
     await page.mouse.move(512, 200);
-    await expect(component).toHaveAttribute('aria-valuenow', '1');
-    await page.mouse.move(512 - 20, 200);
+    await expect(component).toHaveAttribute('aria-valuenow', lastValueNow.toString());
+    for (let i = 0; i < lastValueNow; i++) {
+      await page.mouse.move(512 - i * 20, 200);
+    }
     await expect(component).toHaveAttribute('aria-valuenow', '36');
 
     await page.mouse.up();

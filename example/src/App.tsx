@@ -41,7 +41,9 @@ export const images = [
 ];
 
 function App(props: Partial<ReactImageTurntableProps>) {
-  return <ReactImageTurntable images={images} {...props} />;
+  return (
+    <ReactImageTurntable images={images} autoRotate={{ enabled: true, speed: 200 }} {...props} />
+  );
 }
 
 export default App;
