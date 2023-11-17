@@ -29,7 +29,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
   style,
   tabIndex = 0,
   movementSensitivity = 20,
-  autoRotate = { enabled: false },
+  autoRotate = { disabled: false },
   ...props
 }) => {
   const { ref, activeImageIndex } = useTurntableState({

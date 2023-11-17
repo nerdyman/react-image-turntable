@@ -9,9 +9,9 @@ export interface ReactImageTurntableProps {
   movementSensitivity?: number;
   autoRotate?: {
     /** Automatically rotate the turntable. */
-    enabled: boolean;
+    disabled: boolean;
     /** The speed (in ms) at which the turntable rotates. */
-    speed?: number;
+    interval?: number;
   };
 }
 
