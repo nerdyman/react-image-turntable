@@ -17,7 +17,6 @@ export const useTurntableState = ({
   autoRotate,
 }: UseTurntableStateProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(initialImageIndex);
-  const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -33,18 +32,18 @@ export const useTurntableState = ({
   };
 
   useEffect(() => {
-    if (autoRotate.enabled && !hasUserInteracted && !intervalIdRef.current) {
+    if (!autoRotate.disabled && !intervalIdRef.current) {
       intervalIdRef.current = setInterval(() => {
         setActiveImageIndex((prevIndex) => {
           const nextIndex = prevIndex + 1;
           return nextIndex > imagesCount ? 0 : nextIndex;
         });
-      }, autoRotate.speed || 200);
+      }, autoRotate.interval || 200);
     }
-    if (hasUserInteracted) clearAutoRotateInterval();
+    if (autoRotate.disabled) clearAutoRotateInterval();
 
     return () => clearAutoRotateInterval();
-  }, [autoRotate, hasUserInteracted, imagesCount]);
+  }, [autoRotate, imagesCount]);
 
   useEffect(() => {
     const target = ref.current as HTMLDivElement;
@@ -59,7 +58,6 @@ export const useTurntableState = ({
     };
 
     const handleKeyDown = (ev: KeyboardEvent) => {
-      setHasUserInteracted(true);
       if (ev.key === 'ArrowLeft') {
         decrementActiveIndex();
       } else if (ev.key === 'ArrowRight') {
@@ -68,7 +66,6 @@ export const useTurntableState = ({
     };
 
     const handlePointerMove = (ev: PointerEvent) => {
-      setHasUserInteracted(true);
       const distanceDragged = prevDragPosition - ev.clientX;
 
       if (distanceDragged <= -movementSensitivity) {
@@ -88,7 +85,6 @@ export const useTurntableState = ({
     };
 
     const handlePointerDown = (ev: PointerEvent) => {
-      setHasUserInteracted(true);
       if (ev.button == 2) {
         return;
       }
