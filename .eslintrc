@@ -38,12 +38,11 @@
 
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-unused-vars": [
-      "warn",
+      "error",
       {
         "args": "all",
-        // Although this repo uses React 18 the library supports React 16+ so we still need to import React.
-        "argsIgnorePattern": "^(_|React)",
-        "varsIgnorePattern": "^(_|React)"
+        "argsIgnorePattern": "^__",
+        "varsIgnorePattern": "^__"
       }
     ],
     "@typescript-eslint/no-use-before-define": "warn"
