@@ -44,9 +44,11 @@ jobs:
         run: pnpm run test
 
       - name: Test:Upload
-        uses: paambaati/codeclimate-action@v3.0.0
+        uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
+        with:
+          coverageLocations: ${{github.workspace}}/coverage/*.info:lcov
 
       # Disabled until https://github.com/pnpm/pnpm/issues/6424 is resolved.
       # - uses: preactjs/compressed-size-action@v2
