@@ -1,2 +1,7 @@
 export * from './ReactImageTurntable';
-export type { ReactImageTurntableProps, ReactImageTurntableFullProps } from './types';
+export * from './useReactImageTurntable';
+export type {
+  UseReactImageTurntableProps,
+  ReactImageTurntableRootProps,
+  UseReactImageTurntableReturn,
+} from './types';

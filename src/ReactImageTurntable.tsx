@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
 import type { CSSProperties, FC, MouseEvent } from 'react';
 
-import { useTurntableState } from './hooks';
-import type { ReactImageTurntableFullProps } from './types';
+import type { ReactImageTurntableRootProps } from './types';
 
 /** Base `className` for images. */
 export const CLASS_NAME_IMG = '__react-image-turntable-img';
@@ -10,10 +8,6 @@ export const CLASS_NAME_IMG = '__react-image-turntable-img';
 export const CLASS_NAME_IMG_PRIMARY = `${CLASS_NAME_IMG}--primary`;
 /** `className` of subsequent images. */
 export const CLASS_NAME_IMG_SECONDARY = `${CLASS_NAME_IMG}--secondary`;
-
-const imgBaseStyle = {
-  maxWidth: '100%',
-};
 
 /**
  * Firefox desktop tries to drag the image on `mousedown` + `mousemove` so we need to prevent it
@@ -23,23 +17,15 @@ const handleImgDragStart = (ev: MouseEvent<HTMLImageElement>) => {
   ev.preventDefault();
 };
 
-export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
+export const ReactImageTurntable: FC<ReactImageTurntableRootProps> = ({
+  activeImageIndex,
   images,
-  initialImageIndex = 0,
   style,
   tabIndex = 0,
-  movementSensitivity = 20,
-  onIndexChange,
-  autoRotate = { disabled: false },
+  turntableRef,
+  setActiveImageIndex: __setActiveImageIndex,
   ...props
 }) => {
-  const { ref, activeImageIndex } = useTurntableState({
-    initialImageIndex,
-    imagesCount: images.length - 1,
-    movementSensitivity,
-    autoRotate,
-  });
-
   const rootStyle: CSSProperties = {
     position: 'relative',
     touchAction: 'none',
@@ -47,15 +33,11 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
     ...style,
   };
 
-  useEffect(() => {
-    if (onIndexChange) onIndexChange(activeImageIndex);
-  }, [activeImageIndex, onIndexChange]);
-
   return (
     <div
       aria-label="Image turntable"
       {...props}
-      ref={ref}
+      ref={turntableRef}
       role="slider"
       aria-valuemin={1}
       aria-valuemax={images.length}
@@ -75,7 +57,6 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
           draggable={false}
           onDragStart={handleImgDragStart}
           style={{
-            ...imgBaseStyle,
             position: index === 0 ? undefined : 'absolute',
             opacity: index === activeImageIndex ? 1 : 0,
             left: 0,
@@ -83,6 +64,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
             right: 0,
             bottom: 0,
             width: '100%',
+            maxWidth: '100%',
             height: '100%',
             objectFit: 'cover',
           }}

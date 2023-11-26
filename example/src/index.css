@@ -11,8 +11,13 @@ body {
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: system-ui, sans-serif;
   margin: 0;
+  background-color: #fff;
+  color: #111;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,10 +27,41 @@ pre {
   font-family: monospace;
 }
 
-.container {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.root {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
   flex-direction: column;
+}
+
+.main__toolbar {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.main-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  background-color: #eee;
+  color: #111;
+  border-radius: 0.25rem;
+  border: 1px solid #ddd;
+}
+
+.main-toolbar__item {
+  display: flex;
+  gap: 0.125rem;
 }
