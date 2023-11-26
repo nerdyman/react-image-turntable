@@ -9,7 +9,7 @@
     "rotator",
     "slider"
   ],
-  "version": "3.0.2",
+  "version": "3.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nerdyman/react-image-turntable.git"
