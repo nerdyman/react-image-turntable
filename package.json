@@ -27,7 +27,7 @@
   "scripts": {
     "bootstrap": "npm run bootstrap:project && npm run bootstrap:playwright",
     "bootstrap:project": "corepack enable && pnpm i --frozen-lockfile",
-    "bootstrap:playwright": "pnpx playwright install-deps chromium && pnpx playwright install chromium",
+    "bootstrap:playwright": "pnpm exec playwright install chromium",
     "build": "tsup",
     "dev": "pnpm -r --stream run start",
     "dx": "npm run bootstrap && pnpm exec husky install && pnpm run prepare",
