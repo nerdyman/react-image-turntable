@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ReactImageTurntable } from 'react-image-turntable';
 import type { ReactImageTurntableProps } from 'react-image-turntable';
 
@@ -41,7 +42,27 @@ export const images = [
 ];
 
 function App(props: Partial<ReactImageTurntableProps>) {
-  return <ReactImageTurntable images={images} {...props} />;
+  const [rotationDisabled, setRotationDisabled] = useState(false);
+
+  const handleKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
+    if (rotationDisabled) return;
+
+    if (ev.key === 'ArrowLeft' || ev.key === 'ArrowRight') {
+      setRotationDisabled(true);
+    }
+  };
+
+  return (
+    <ReactImageTurntable
+      images={images}
+      autoRotate={{ disabled: rotationDisabled, interval: 200 }}
+      onPointerDown={() => setRotationDisabled(true)}
+      onPointerUp={() => setRotationDisabled(false)}
+      onKeyDown={handleKeyDown}
+      onKeyUp={() => setRotationDisabled(false)}
+      {...props}
+    />
+  );
 }
 
 export default App;

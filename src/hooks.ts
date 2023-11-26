@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import type { ReactImageTurntableProps } from './types';
 
 interface UseTurntableStateProps
-  extends Required<Pick<ReactImageTurntableProps, 'initialImageIndex' | 'movementSensitivity'>> {
+  extends Required<
+    Pick<ReactImageTurntableProps, 'initialImageIndex' | 'movementSensitivity' | 'autoRotate'>
+  > {
   /** Number of images starting from zero. */
   imagesCount: number;
 }
@@ -12,13 +14,36 @@ export const useTurntableState = ({
   initialImageIndex,
   imagesCount,
   movementSensitivity,
+  autoRotate,
 }: UseTurntableStateProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(initialImageIndex);
+  const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setActiveImageIndex(initialImageIndex);
   }, [initialImageIndex]);
+
+  const clearAutoRotateInterval = () => {
+    if (intervalIdRef.current) {
+      clearInterval(intervalIdRef.current);
+      intervalIdRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    if (!autoRotate.disabled && !intervalIdRef.current) {
+      intervalIdRef.current = setInterval(() => {
+        setActiveImageIndex((prevIndex) => {
+          const nextIndex = prevIndex + 1;
+          return nextIndex > imagesCount ? 0 : nextIndex;
+        });
+      }, autoRotate.interval || 200);
+    }
+    if (autoRotate.disabled) clearAutoRotateInterval();
+
+    return () => clearAutoRotateInterval();
+  }, [autoRotate, imagesCount]);
 
   useEffect(() => {
     const target = ref.current as HTMLDivElement;

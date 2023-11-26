@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import type { CSSProperties, FC, MouseEvent } from 'react';
 
@@ -31,12 +30,14 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
   tabIndex = 0,
   movementSensitivity = 20,
   onIndexChange,
+  autoRotate = { disabled: false },
   ...props
 }) => {
   const { ref, activeImageIndex } = useTurntableState({
     initialImageIndex,
     imagesCount: images.length - 1,
     movementSensitivity,
+    autoRotate,
   });
 
   const rootStyle: CSSProperties = {

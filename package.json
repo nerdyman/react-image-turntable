@@ -9,7 +9,7 @@
     "rotator",
     "slider"
   ],
-  "version": "3.0.2",
+  "version": "3.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nerdyman/react-image-turntable.git"
@@ -17,7 +17,10 @@
   "author": "nerdyman",
   "license": "MIT",
   "sideEffects": false,
-  "packageManager": "pnpm@6.32.9",
+  "packageManager": "pnpm@8.10.5",
+  "engines": {
+    "node": ">=16.9.0"
+  },
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "files": [
@@ -25,10 +28,13 @@
     "src"
   ],
   "scripts": {
-    "bootstrap": "corepack disable && corepack enable && pnpm i --frozen-lockfile",
+    "bootstrap": "npm run bootstrap:project && npm run bootstrap:playwright",
+    "bootstrap:project": "corepack enable && pnpm i --frozen-lockfile",
+    "bootstrap:playwright": "pnpm exec playwright install chromium",
     "build": "tsup",
     "dev": "pnpm -r --stream run start",
     "dx": "npm run bootstrap && pnpm exec husky install && pnpm run prepare",
+    "clean": "rm -rf ./node_modules ./coverage ./dist ./.nyc_output ./.*.log ./example/node_modules",
     "lint": "eslint . && prettier --check .",
     "prepare": "husky install",
     "release": "pnpm run build && np --no-tests --no-cleanup",
@@ -40,7 +46,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "pretty-quick --staged",
+      "prettier --write",
       "eslint --fix"
     ]
   },
@@ -63,34 +69,34 @@
     "react": ">=16.8"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.16.7",
-    "@babel/preset-typescript": "^7.16.7",
-    "@playwright/test": "^1.21.1",
-    "@size-limit/preset-small-lib": "^7.0.8",
-    "@types/jest-axe": "^3.5.3",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
-    "axe-core": "^4.4.1",
-    "axe-playwright": "^1.1.11",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@playwright/test": "^1.39.0",
+    "@size-limit/preset-small-lib": "^11.0.0",
+    "@types/jest-axe": "^3.5.8",
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "axe-core": "^4.8.2",
+    "axe-playwright": "^1.2.3",
     "babel-plugin-istanbul": "^6.1.1",
     "esbuild-plugin-babel": "^0.2.3",
-    "eslint": "^8.15.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^12.4.1",
-    "np": "^7.6.1",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "np": "^8.0.4",
     "nyc": "^15.1.0",
-    "playwright-core": "^1.21.1",
-    "prettier": "^2.6.2",
-    "pretty-quick": "^3.1.3",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "size-limit": "^7.0.8",
-    "tslib": "^2.4.0",
-    "tsup": "^5.12.7",
-    "typescript": "^4.6.4"
+    "playwright-core": "^1.39.0",
+    "prettier": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "size-limit": "^11.0.0",
+    "tslib": "^2.6.2",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
   }
 }

@@ -1,12 +1,21 @@
 name: ci
-on: [push]
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  workflow_dispatch:
+
 jobs:
   build:
     name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['16.x']
+        node: ['20.x']
         os: [ubuntu-latest]
     steps:
       - name: Checkout repo
@@ -32,9 +41,17 @@ jobs:
         run: pnpm lint
 
       - name: Test:Execute
-        run: npx playwright install-deps chromium && pnpx playwright install chromium && DEBUG=pw:api pnpm run test
+        run: pnpm run test
 
       - name: Test:Upload
-        uses: paambaati/codeclimate-action@v3.0.0
+        uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
+        with:
+          coverageLocations: ${{github.workspace}}/coverage/*.info:lcov
+
+      # Disabled until https://github.com/pnpm/pnpm/issues/6424 is resolved.
+      # - uses: preactjs/compressed-size-action@v2
+      #   with:
+      #     repo-token: '${{ secrets.GITHUB_TOKEN }}'
+      #     build-script: 'build'
