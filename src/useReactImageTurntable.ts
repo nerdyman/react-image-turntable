@@ -33,6 +33,12 @@ export const useReactImageTurntable = ({
     }
   };
 
+  // Handle image count changes.
+  useEffect(() => {
+    if (activeImageIndex > imagesCount) setActiveImageIndexState(imagesCount);
+  }, [imagesCount]);
+
+  // Control autorotation.
   useEffect(() => {
     if (!autoRotate?.disabled && !intervalIdRef.current) {
       intervalIdRef.current = setInterval(() => {
@@ -50,6 +56,7 @@ export const useReactImageTurntable = ({
     return () => clearAutoRotateInterval();
   }, [autoRotate, imagesCount]);
 
+  // Event bindings.
   useEffect(() => {
     const target = turntableRef.current as HTMLDivElement;
     let prevDragPosition = 0;

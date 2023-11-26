@@ -74,13 +74,18 @@ function App() {
         </label>
 
         <button
-          onClick={() =>
-            setCurrentImages((prev) =>
-              prev.length == images.length ? images.slice(0, 12) : images,
-            )
-          }
+          onClick={() => {
+            setCurrentImages((prev) => {
+              const next =
+                prev.length === images.length
+                  ? prev.filter((__img, index) => index % 2 === 0)
+                  : images;
+
+              return next;
+            });
+          }}
         >
-          Toggle cut images
+          Set to {currentImages.length === images.length ? images.length : images.length / 2} images
         </button>
       </div>
     </div>
