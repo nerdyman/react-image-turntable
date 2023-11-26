@@ -18,6 +18,9 @@
   "license": "MIT",
   "sideEffects": false,
   "packageManager": "pnpm@8.10.5",
+  "engines": {
+    "node": ">=16.9.0"
+  },
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "files": [
