@@ -11,7 +11,7 @@
     "pepjs": "^0.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-image-turntable": "workspace:^"
+    "react-image-turntable": "latest"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
