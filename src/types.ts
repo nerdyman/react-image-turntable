@@ -7,6 +7,8 @@ export interface ReactImageTurntableProps {
   initialImageIndex?: number;
   /** The amount a "drag" has to move before an image changes to next or previous. */
   movementSensitivity?: number;
+  /** Callback that triggers whenever the active index changes. */
+  onIndexChange?: (index: number) => void;
   autoRotate?: {
     /** Automatically rotate the turntable. */
     disabled: boolean;

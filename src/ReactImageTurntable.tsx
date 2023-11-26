@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { CSSProperties, FC, MouseEvent } from 'react';
 
 import { useTurntableState } from './hooks';
@@ -29,6 +29,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
   style,
   tabIndex = 0,
   movementSensitivity = 20,
+  onIndexChange,
   autoRotate = { disabled: false },
   ...props
 }) => {
@@ -45,6 +46,10 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
     userSelect: 'none',
     ...style,
   };
+
+  useEffect(() => {
+    if (onIndexChange) onIndexChange(activeImageIndex);
+  }, [activeImageIndex, onIndexChange]);
 
   return (
     <div
