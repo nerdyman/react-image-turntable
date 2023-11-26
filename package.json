@@ -31,6 +31,7 @@
     "build": "tsup",
     "dev": "pnpm -r --stream run start",
     "dx": "npm run bootstrap && pnpm exec husky install && pnpm run prepare",
+    "clean": "rm -rf ./node_modules ./coverage ./dist ./.nyc_output ./.*.log ./example/node_modules",
     "lint": "eslint . && prettier --check .",
     "prepare": "husky install",
     "release": "pnpm run build && np --no-tests --no-cleanup",
