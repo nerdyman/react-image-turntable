@@ -51,7 +51,9 @@ function App() {
       {/* Render the component with the props from the hook. */}
       <ReactImageTurntable id="turntable" {...turntableProps} />
 
-      {/* Demo controls, ignore. */}
+      {/**
+       * Demo code, ignore.
+       */}
       <div className="main__toolbar main-toolbar">
         <label className="main-toolbar__item">
           <span>Index</span>
@@ -63,14 +65,16 @@ function App() {
             onChange={(ev) => turntableProps.setActiveImageIndex(ev.target.valueAsNumber)}
           />
           <button
+            title="Previous image"
             onClick={() => turntableProps.setActiveImageIndex(turntableProps.activeImageIndex - 1)}
           >
-            -
+            &lt;
           </button>
           <button
+            title="Next image"
             onClick={() => turntableProps.setActiveImageIndex(turntableProps.activeImageIndex + 1)}
           >
-            +
+            &gt;
           </button>
         </label>
 
@@ -86,7 +90,7 @@ function App() {
             });
           }}
         >
-          Set to {currentImages.length === images.length ? images.length : images.length / 2} images
+          Set to {currentImages.length === images.length ? images.length / 2 : images.length} images
         </button>
       </div>
     </div>

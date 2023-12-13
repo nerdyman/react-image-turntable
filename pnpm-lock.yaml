@@ -45,9 +45,6 @@ importers:
       babel-plugin-istanbul:
         specifier: ^6.1.1
         version: 6.1.1
-      esbuild-plugin-babel:
-        specifier: ^0.2.3
-        version: 0.2.3(@babel/core@7.23.3)
       eslint:
         specifier: ^8.53.0
         version: 8.54.0
@@ -124,6 +121,9 @@ importers:
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
+      esbuild-plugin-babel:
+        specifier: ^0.2.3
+        version: 0.2.3(@babel/core@7.23.3)
       esbuild-plugin-browserslist:
         specifier: ^0.10.0
         version: 0.10.0(browserslist@4.22.1)(esbuild@0.19.7)

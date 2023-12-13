@@ -3,8 +3,15 @@ import browserslist from 'browserslist';
 import { resolveToEsbuildTarget } from 'esbuild-plugin-browserslist';
 import type { Options } from 'tsup';
 import { defineConfig } from 'tsup';
+import babel from 'esbuild-plugin-babel';
 
 const target = resolveToEsbuildTarget(browserslist()) as Options['target'];
+
+const USE_BABEL = process.env.NODE_ENV === 'test';
+
+if (USE_BABEL) {
+  console.info('[tsup.config] Using babel for transpilation.');
+}
 
 export default defineConfig((options) => ({
   clean: !options.watch,
@@ -15,12 +22,18 @@ export default defineConfig((options) => ({
   target,
   sourcemap: true,
   splitting: true,
-  // Storybook test coverage won't work with files sourced from outside of its root directory, so
-  // we need to copy the lib into the docs folder.
-  onSuccess: 'cp -r src ../docs/storybook',
   esbuildOptions(esbuild) {
     esbuild.banner = {
       js: '"use client"',
     };
   },
+  esbuildPlugins: [
+    USE_BABEL &&
+      babel({
+        config: {
+          presets: ['@babel/preset-typescript', '@babel/preset-react'],
+          plugins: ['istanbul'],
+        },
+      }),
+  ].filter(Boolean),
 }));
