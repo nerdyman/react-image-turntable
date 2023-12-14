@@ -37,7 +37,7 @@
     "clean": "rm -rf ./node_modules ./coverage ./dist ./.nyc_output ./.*.log ./example/node_modules",
     "lint": "eslint . && prettier --check .",
     "prepare": "husky install",
-    "release": "pnpm run build && np --no-tests --no-cleanup",
+    "release": "pnpm run build && np --no-tests --no-cleanup --yolo",
     "size": "size-limit",
     "start": "tsup --watch",
     "test": "rm -rf {.nyc_output,coverage} && playwright test && pnpm nyc report --reporter=lcov",
