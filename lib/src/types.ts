@@ -32,7 +32,7 @@ export interface UseReactImageTurntableReturn extends Pick<UseReactImageTurntabl
   /** Set the active image index. */
   setActiveImageIndex: (index: number) => void;
   /** The ref of the root turntable element. */
-  turntableRef: RefObject<HTMLDivElement>;
+  ref: RefObject<HTMLDivElement>;
 }
 
 /** Base props *and* all available HTML element props. */

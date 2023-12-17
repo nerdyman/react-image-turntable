@@ -132,6 +132,6 @@ export const useReactImageTurntable = ({
     activeImageIndex,
     setActiveImageIndex,
     images,
-    turntableRef,
+    ref: turntableRef,
   };
 };

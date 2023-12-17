@@ -23,8 +23,8 @@ Display a set of images as a draggable 360 degree turntable.
 
 ## Features
 
-- Accessible, screen-reader friendly
-- Responsive & fluid with intrinsic sizing
+- Accessible & screen-reader friendly
+- Responsive & intrinsically sized
 - Built-in keyboard navigation
 - Programmatically controllable
 - Teeny Tiny (less than 1kb gzipped)
@@ -69,15 +69,14 @@ See the [example code](./example) for full demo.
 
 The `useReactImageTurntable` hook accepts the following properties.
 
-| Props                 | Type                                 | Required | Default Value | Description                                                                  |
-| --------------------- | :----------------------------------- | :------: | :------------ | :--------------------------------------------------------------------------- |
-| `autoRotate`          | `ReactImageTurntableAutoRotateProps` |          | See below     | Properties to control autorotation.                                          |
-| `autoRotate.disabled` | `boolean`                            |          | `true`        | Whether to automatically rotate the turntable.                               |
-| `autoRotate.interval` | `number`                             |          | `200`         | The interval between autorotations in ms.                                    |
-| `images`              | `string[]`                           |    ✓     | `undefined`   | List of image `src` attributes.                                              |
-| `initialImageIndex`   | `number`                             |          | `0`           | Index of image to show first.                                                |
-| `movementSensitivity` | `number`                             |          | `20`          | The amount a "drag" has to move before an image changes to next or previous. |
-| `onIndexChange`       | `(index: number) => void`            |          | `undefined`   | Callback to trigger whenever the active index changes.                       |
+| Props                 | Type                      | Required | Default Value | Description                                                                  |
+| --------------------- | :------------------------ | :------: | :------------ | :--------------------------------------------------------------------------- |
+| `autoRotate.enabled`  | `boolean`                 |          | `false`       | Whether to automatically rotate the turntable.                               |
+| `autoRotate.interval` | `number`                  |          | `200`         | The interval between autorotations in ms.                                    |
+| `images`              | `string[]`                |    ✓     | `undefined`   | List of image `src` attributes.                                              |
+| `initialImageIndex`   | `number`                  |          | `0`           | Index of image to show first.                                                |
+| `movementSensitivity` | `number`                  |          | `20`          | The amount a "drag" has to move before an image changes to next or previous. |
+| `onIndexChange`       | `(index: number) => void` |          | `undefined`   | Callback to trigger whenever the active index changes.                       |
 
 #### Output Props
 
@@ -88,7 +87,7 @@ The `useReactImageTurntable` hook returns the following properties.
 | `activeImageIndex`    | `number`                    | The index of the image currently being shown. |
 | `setActiveImageIndex` | `(index: number) => void`   | Function to set the active index.             |
 | `images`              | `string[]`                  | The images passed into the hook.              |
-| `turntableRef`        | `RefObject<HTMLDivElement>` | The ref of the root turntable element.        |
+| `ref`                 | `RefObject<HTMLDivElement>` | The ref of the root turntable element.        |
 
 Note that there is no need for a `setImages` function. `images` is not stored in state. If you want
 to change the images simply change the `images` prop passed into the hook.
