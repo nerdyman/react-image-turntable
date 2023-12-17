@@ -4,13 +4,12 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  react-image-turntable: workspace:*
+
 importers:
 
   .:
-    dependencies:
-      react:
-        specifier: '>=16.8'
-        version: 18.2.0
     devDependencies:
       '@babel/preset-react':
         specifier: ^7.23.3

@@ -7,6 +7,11 @@
   },
   "license": "MIT",
   "packageManager": "pnpm@8.12.1",
+  "pnpm": {
+    "overrides": {
+      "react-image-turntable": "workspace:*"
+    }
+  },
   "scripts": {
     "bootstrap": "npm run bootstrap:project && npm run bootstrap:playwright",
     "bootstrap:project": "corepack enable && pnpm i --frozen-lockfile",
