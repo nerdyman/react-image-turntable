@@ -45,6 +45,13 @@ input,
 button,
 label {
   font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+input,
+button {
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
 }
 
 label:has(> *) {

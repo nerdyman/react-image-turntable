@@ -52,18 +52,14 @@ export const AdvancedDemo: FC = () => {
     interval: 75,
   });
 
-  /**
-   * Stop autorotation on pointer down / left click.
-   */
+  /** Stop autorotation on pointer down / left click. */
   const handlePointerDown: PointerEventHandler<HTMLDivElement> = useCallback((ev) => {
     if (ev.button === 0) {
       setAutoRotate((prev) => ({ ...prev, enabled: false }));
     }
   }, []);
 
-  /**
-   * Log out to console when the index changes.
-   */
+  /** Log to console when the index changes. */
   const onIndexChange = useCallback((index: number) => {
     console.info('Index changed:', index);
   }, []);
