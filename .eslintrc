@@ -2,6 +2,7 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": "./tsconfig.eslint.json",
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -14,6 +15,7 @@
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/recommended"
   ],
   "env": {
