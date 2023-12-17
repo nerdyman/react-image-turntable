@@ -1,25 +1,17 @@
 {
-  "version": "0.0.1",
   "name": "@this/root",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nerdyman/react-image-turntable.git"
   },
   "license": "MIT",
-  "sideEffects": false,
-  "packageManager": "pnpm@8.10.5",
-  "files": [
-    "dist",
-    "src"
-  ],
+  "packageManager": "pnpm@8.12.1",
   "scripts": {
     "bootstrap": "npm run bootstrap:project && npm run bootstrap:playwright",
     "bootstrap:project": "corepack enable && pnpm i --frozen-lockfile",
     "bootstrap:playwright": "pnpm exec playwright install chromium",
     "clean": "rm -rf ./coverage ./dist ./.nyc_output ././{.,lib,example}.*.log ./{.,lib,example}/node_modules",
-    "lint": "eslint . && prettier --check .",
-    "release": "pnpm run build && np --no-tests --no-cleanup",
-    "start": "tsup --watch",
     "test": "rm -rf {.nyc_output,coverage} && playwright test && pnpm nyc report --reporter=lcov",
     "test:no-coverage": "playwright test",
     "test:debug": "env PWDEBUG=1 NODE_ENV=test playwright test && pnpm nyc report --reporter=lcov"
@@ -35,9 +27,6 @@
     "semi": true,
     "singleQuote": true,
     "trailingComma": "all"
-  },
-  "peerDependencies": {
-    "react": ">=16.8"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.23.3",
