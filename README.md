@@ -14,7 +14,7 @@ Display a set of images as a draggable 360 degree turntable.
 
 <br />
 
-<a href="https://npmjs.com/package/react-image-turntable"><img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=version" alt="NPM package" /></a>
+<a href="https://npmjs.com/package/react-image-turntable"><img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=npm" alt="NPM package" /></a>
 <a href="https://github.com/nerdyman/react-image-turntable/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/react-image-turntable.svg" alt="License MIT" /></a>
 <a href="https://github.com/nerdyman/react-compare-slider/actions?query=workflow%3Abuild"><img alt="GitHub CI status" src="https://img.shields.io/github/actions/workflow/status/nerdyman/react-image-turntable/main.yml" /></a>
 <a href="https://codeclimate.com/github/nerdyman/react-image-turntable/test_coverage"><img src="https://img.shields.io/codeclimate/coverage/nerdyman/react-image-turntable" /></a>
@@ -23,9 +23,10 @@ Display a set of images as a draggable 360 degree turntable.
 
 ## Features
 
-- Accessible
+- Accessible, screen-reader friendly
 - Responsive & fluid with intrinsic sizing
-- Supports keyboard navigation
+- Built-in keyboard navigation
+- Programmatically controllable
 - Teeny Tiny (less than 1kb gzipped)
 - Zero dependencies
 - Type safe
@@ -42,19 +43,10 @@ pnpm i react-image-turntable
 
 ## Usage
 
-### Props
-
-| Props                 | Type       | Required | Default Value | Description                                                                  |
-| --------------------- | :--------- | :------: | :------------ | :--------------------------------------------------------------------------- |
-| `images`              | `string[]` |    ✓     | `undefined`   | List of image `src` attributes.                                              |
-| `initialImageIndex`   | `number`   |          | `0`           | Index of image to show first.                                                |
-| `movementSensitivity` | `number`   |          | `20`          | The amount a "drag" has to move before an image changes to next or previous. |
-
 ### Example
 
-```ts
-import React from 'react';
-import { ReactImageTurntable } from 'react-image-turntable';
+```tsx
+import { ReactImageTurntable, useReactImageTurntable } from 'react-image-turntable';
 
 const images = [
   'https://via.placeholder.com/1200x800?text=1',
@@ -62,21 +54,95 @@ const images = [
   'https://via.placeholder.com/1200x800?text=3',
 ];
 
-export const Turntable = () => <ReactImageTurntable images={images} />;
+export const App = () => {
+  const turntableProps = useReactImageTurntable({ images });
+
+  return <ReactImageTurntable {...turntableProps} />;
+};
 ```
 
-Also see the [example code](./example) in the repo.
+See the [example code](./example) for full demo.
+
+### `useReactImageTurntable` Props
+
+#### Input Props
+
+The `useReactImageTurntable` hook accepts the following properties.
+
+| Props                 | Type                                 | Required | Default Value | Description                                                                  |
+| --------------------- | :----------------------------------- | :------: | :------------ | :--------------------------------------------------------------------------- |
+| `autoRotate`          | `ReactImageTurntableAutoRotateProps` |          | See below     | Properties to control autorotation.                                          |
+| `autoRotate.disabled` | `boolean`                            |          | `true`        | Whether to automatically rotate the turntable.                               |
+| `autoRotate.interval` | `number`                             |          | `200`         | The interval between autorotations in ms.                                    |
+| `images`              | `string[]`                           |    ✓     | `undefined`   | List of image `src` attributes.                                              |
+| `initialImageIndex`   | `number`                             |          | `0`           | Index of image to show first.                                                |
+| `movementSensitivity` | `number`                             |          | `20`          | The amount a "drag" has to move before an image changes to next or previous. |
+| `onIndexChange`       | `(index: number) => void`            |          | `undefined`   | Callback to trigger whenever the active index changes.                       |
+
+#### Output Props
+
+The `useReactImageTurntable` hook returns the following properties.
+
+| Props                 | Type                        | Description                                   |
+| --------------------- | :-------------------------- | --------------------------------------------- |
+| `activeImageIndex`    | `number`                    | The index of the image currently being shown. |
+| `setActiveImageIndex` | `(index: number) => void`   | Function to set the active index.             |
+| `images`              | `string[]`                  | The images passed into the hook.              |
+| `turntableRef`        | `RefObject<HTMLDivElement>` | The ref of the root turntable element.        |
+
+Note that there is no need for a `setImages` function. `images` is not stored in state. If you want
+to change the images simply change the `images` prop passed into the hook.
+
+##### Example Usage
+
+<details>
+<summary>View example</summary>
+
+```tsx
+import { ReactImageTurntable, useReactImageTurntable } from 'react-image-turntable';
+
+const images = [
+  'https://via.placeholder.com/1200x800?text=1',
+  'https://via.placeholder.com/1200x800?text=2',
+  'https://via.placeholder.com/1200x800?text=3',
+];
+
+export const App = () => {
+  const turntableProps = useReactImageTurntable({
+    autoRotate: { disabled: true, interval: 75 },
+    images,
+    initialImageIndex: 1, // Start on the second image.
+    movementSensitivity: 50, // Increase the amount of drag needed to change images.
+    onIndexChange: (index) => console.log(`Active image index changed to ${index}`),
+  });
+
+  const handleSelectFirstImage = () => {
+    turntableProps.setActiveIndex(0);
+  };
+
+  return (
+    <>
+      <button type="button" onClick={handleSelectFirstImage}>
+        Select first image
+      </button>
+      <ReactImageTurntable {...turntableProps} />
+    </>
+  );
+};
+```
+
+</details>
 
 ### Custom Styling
 
-The library uses the first image passed to intrinsically size the component, it also exports following
-`className`s to apply custom styles when needed.
+The library uses the first image in `images[]` to intrinsically size the component, it also exports
+the following `className`s allowing you to apply custom styles.
 
-| `className`                | Purpose                                                              |
-| :------------------------- | :------------------------------------------------------------------- |
-| `CLASS_NAME_IMG`           | Base class for images.                                               |
-| `CLASS_NAME_IMG_PRIMARY`   | Class of first rendered image (sets the size of the main component). |
-| `CLASS_NAME_IMG_SECONDARY` | Class of subsequent images.                                          |
+| `className`                | Purpose                                                                   |
+| :------------------------- | :------------------------------------------------------------------------ |
+| `CLASS_NAME_IMG`           | Base class for all images.                                                |
+| `CLASS_NAME_IMG_PRIMARY`   | Class of first image in `images[]` (sets the size of the main component). |
+| `CLASS_NAME_IMG_SECONDARY` | Class of subsequent images.                                               |
 
 ---
 
@@ -93,5 +159,4 @@ The library is built for `ES2021`.
 ## Notes
 
 - It's recommended you use a minimum of 24-36 for a smooth experience
-- Legacy [v2.5.4 Demo](https://codesandbox.io/s/react-image-turntable-riy93)
-- Original version by [@andrewmcoupe](https://github.com/andrewmcoupe)
+- Legacy version by [@andrewmcoupe](https://github.com/andrewmcoupe)
