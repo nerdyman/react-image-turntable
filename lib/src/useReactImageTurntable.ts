@@ -4,57 +4,62 @@ import type { UseReactImageTurntableProps, UseReactImageTurntableReturn } from '
 
 export const useReactImageTurntable = ({
   initialImageIndex = 0,
-  autoRotate = { disabled: true, interval: 200 },
+  autoRotate = {},
   images,
   movementSensitivity = 20,
   onIndexChange,
 }: UseReactImageTurntableProps): UseReactImageTurntableReturn => {
-  const [activeImageIndex, setActiveImageIndexState] = useState(initialImageIndex);
-  const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
-  const turntableRef = useRef<HTMLDivElement>(null);
   const imagesCount = images.length - 1;
+  const { interval: autoRotateInterval = 200, enabled: autoRotateIsEnabled = false } = autoRotate;
+  const [activeImageIndex, setActiveImageIndexUnsafe] = useState(initialImageIndex);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const turntableRef = useRef<HTMLDivElement>(null);
 
   /**
-   * Safely set the next image index with negative indexes set to `0` and indexes greater than the total
-   * images set to the last image.
+   * Safely set the image index with fallback to 0 if the index is out of bounds.
    */
   const setActiveImageIndex = useCallback(
     (index: number) => {
       const nextIndex = index > imagesCount ? 0 : index < 0 ? imagesCount : index;
-      setActiveImageIndexState(nextIndex);
+      setActiveImageIndexUnsafe(nextIndex);
     },
     [imagesCount],
   );
 
-  const clearAutoRotateInterval = () => {
-    if (intervalIdRef.current) {
-      clearInterval(intervalIdRef.current);
-      intervalIdRef.current = null;
-    }
-  };
-
   // Handle image count changes.
   useEffect(() => {
-    if (activeImageIndex > imagesCount) setActiveImageIndexState(imagesCount);
-  }, [imagesCount]);
+    if (activeImageIndex > imagesCount) setActiveImageIndexUnsafe(0);
+  }, [activeImageIndex, imagesCount]);
+
+  // Handle `onIndexChange` callback.
+  useEffect(() => {
+    if (onIndexChange) onIndexChange(activeImageIndex);
+  }, [activeImageIndex, onIndexChange]);
 
   // Control autorotation.
   useEffect(() => {
-    if (!autoRotate?.disabled && !intervalIdRef.current) {
-      intervalIdRef.current = setInterval(() => {
-        setActiveImageIndexState((prevIndex) => {
+    const clearAutoRotateInterval = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+
+    if (autoRotateIsEnabled && !intervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        setActiveImageIndexUnsafe((prevIndex) => {
           const nextIndex = prevIndex + 1;
           return nextIndex > imagesCount ? 0 : nextIndex;
         });
-      }, autoRotate.interval || 200);
+      }, autoRotateInterval);
     }
 
-    if (autoRotate.disabled) {
+    if (!autoRotateIsEnabled) {
       clearAutoRotateInterval();
     }
 
     return () => clearAutoRotateInterval();
-  }, [autoRotate, imagesCount]);
+  }, [autoRotateInterval, autoRotateIsEnabled, imagesCount]);
 
   // Event bindings.
   useEffect(() => {
@@ -62,17 +67,15 @@ export const useReactImageTurntable = ({
     let prevDragPosition = 0;
 
     const incrementActiveIndex = () => {
-      setActiveImageIndexState((prev) => {
+      setActiveImageIndexUnsafe((prev) => {
         const next = prev + 1 > imagesCount ? 0 : prev + 1;
-        onIndexChange?.(next);
         return next;
       });
     };
 
     const decrementActiveIndex = () => {
-      setActiveImageIndexState((prev) => {
+      setActiveImageIndexUnsafe((prev) => {
         const next = prev - 1 < 0 ? imagesCount : prev - 1;
-        onIndexChange?.(next);
         return next;
       });
     };
@@ -126,9 +129,9 @@ export const useReactImageTurntable = ({
   }, [imagesCount, movementSensitivity, onIndexChange]);
 
   return {
-    images,
     activeImageIndex,
     setActiveImageIndex,
+    images,
     turntableRef,
   };
 };

@@ -10,8 +10,7 @@ export const CLASS_NAME_IMG_PRIMARY = `${CLASS_NAME_IMG}--primary`;
 export const CLASS_NAME_IMG_SECONDARY = `${CLASS_NAME_IMG}--secondary`;
 
 /**
- * Firefox desktop tries to drag the image on `mousedown` + `mousemove` so we need to prevent it
- * then mimic the default behavior of the browser.
+ * Firefox desktop tries to drag the image on `pointerdown` + `pointermove` so we need to prevent it.
  */
 const handleImgDragStart = (ev: MouseEvent<HTMLImageElement>) => {
   ev.preventDefault();

@@ -1,29 +1,37 @@
 import type { HtmlHTMLAttributes, RefObject } from 'react';
 
+export interface ReactImageTurntableAutoRotateProps {
+  /**
+   * Whether to automatically rotate the turntable.
+   * @default false
+   */
+  enabled?: boolean;
+  /**
+   * The speed in ms at which the turntable autorotates.
+   * @default 200
+   */
+  interval?: number;
+}
+
 export interface UseReactImageTurntableProps {
-  /** The array index of the active image. */
+  /** Autorotation configuration. */
+  autoRotate?: ReactImageTurntableAutoRotateProps;
+  /** The array index of the image to show on first load. */
   initialImageIndex?: number;
-  /** Properties to automatically rotate the turntable. */
-  autoRotate?: {
-    /** Enable or disable the autorotation of the turntable. */
-    disabled?: boolean;
-    /** The speed (in ms) at which the turntable rotates. */
-    interval?: number;
-  };
   /** List of image `src` attributes. */
   images: string[];
   /** The amount a "drag" has to move before an image changes to next or previous. */
   movementSensitivity?: number;
-  /** Callback that triggers whenever the active index changes. */
+  /** Callback to trigger whenever the active index changes. */
   onIndexChange?: (index: number) => void;
 }
 
 export interface UseReactImageTurntableReturn extends Pick<UseReactImageTurntableProps, 'images'> {
-  /** The array index of the active image. */
+  /** Array index of the current image. */
   activeImageIndex: number;
-  /** Function to programatically set the active image index. */
+  /** Set the active image index. */
   setActiveImageIndex: (index: number) => void;
-  /** The ref to the root turntable element. */
+  /** The ref of the root turntable element. */
   turntableRef: RefObject<HTMLDivElement>;
 }
 
