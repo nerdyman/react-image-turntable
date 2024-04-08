@@ -12,3 +12,5 @@ storybook-static
 .nyc_output
 test-results/
 playwright-report/
+lib/README.md
+lib/LICENSE

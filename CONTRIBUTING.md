@@ -8,7 +8,7 @@ Ensure you're using the Node version specified in [.nvmrc](./.nvmrc) and run the
 bootstrap the project:
 
 ```sh
-npm run dx
+npm run bootstrap
 ```
 
 Then run the following commands in separate terminals:

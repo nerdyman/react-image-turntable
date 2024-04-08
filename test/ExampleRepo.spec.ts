@@ -7,16 +7,16 @@ test.describe('Example Repo', () => {
   const getComponentRoot = (page: Page) => page.getByRole('slider');
 
   test.beforeEach(async ({ page }) => {
-    await page.goto(`http://localhost:${process.env.PORT}/?debug`);
+    await page.goto(`http://localhost:${process.env.PORT}`);
     await injectAxe(page);
-
-    configureAxe(page, {
+    await configureAxe(page, {
       checks: [
         { id: 'page-has-heading-one', enabled: false },
         { id: 'meta-viewport', enabled: false },
         { id: 'region', enabled: false },
       ],
     });
+    await checkA11y(page);
   });
 
   test.afterEach(async ({ page }) => {
@@ -85,17 +85,17 @@ test.describe('Example Repo', () => {
     await component.click();
     await expect(component).toBeFocused();
 
-    page.waitForTimeout(200);
+    await page.waitForTimeout(200);
 
     // Should automatically rotate until mouse down is fired.
     const lastValueNow = await component.getAttribute('aria-valuenow').then(Number);
-    await expect(lastValueNow).toBeGreaterThan(initialValueNow);
+    expect(lastValueNow).toBeGreaterThan(initialValueNow);
 
     // Fire initial click to set dragging origin.
     await page.mouse.move(512, 200);
     await page.mouse.down();
 
-    page.waitForTimeout(200);
+    await page.waitForTimeout(200);
     await expect(component).toHaveAttribute('aria-valuenow', lastValueNow.toString());
 
     // Should navigate forwards when dragging right while mouse is down.
