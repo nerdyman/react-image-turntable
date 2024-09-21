@@ -1,28 +1,20 @@
 {
-  "name": "@this/root",
+  "name": "root",
   "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nerdyman/react-image-turntable.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@8.12.1",
-  "pnpm": {
-    "overrides": {
-      "react-image-turntable": "workspace:*"
-    }
-  },
+  "packageManager": "pnpm@9.10.0",
   "scripts": {
-    "bootstrap": "npm run bootstrap:project && npm run bootstrap:playwright",
+    "bootstrap": "npm run bootstrap:project && yarn bootstrap:playwright",
     "bootstrap:project": "corepack enable && pnpm i --frozen-lockfile",
-    "bootstrap:playwright": "pnpm exec playwright install chromium",
-    "clean": "rm -rf ./coverage ./dist ./.nyc_output ././{.,lib,example}.*.log ./{.,lib,example}/node_modules",
-    "test": "rm -rf {.nyc_output,coverage} && playwright test && pnpm nyc report --reporter=lcov",
-    "test:no-coverage": "playwright test",
-    "test:debug": "env PWDEBUG=1 NODE_ENV=test playwright test && pnpm nyc report --reporter=lcov"
+    "bootstrap:playwright": "yarn exec playwright install chromium",
+    "clean": "rm -rf ./coverage ./dist ./.nyc_output ././{.,lib,example}.*.log ./{.,lib,example}/node_modules"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
+    "**/*.{js,jsx,mjs,mts,ts,tsx}": [
       "prettier --write",
       "eslint --fix"
     ]
@@ -33,24 +25,19 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "resolutions": {
+    "react-image-turntable": "workspace:*"
+  },
   "devDependencies": {
-    "@babel/preset-react": "^7.23.3",
-    "@babel/preset-typescript": "^7.23.3",
-    "@playwright/test": "^1.39.0",
-    "@types/jest-axe": "^3.5.8",
-    "@types/node": "^20.9.0",
+    "@types/node": "^22.5.5",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
-    "axe-core": "^4.8.2",
-    "axe-playwright": "^1.2.3",
-    "babel-plugin-istanbul": "^6.1.1",
     "eslint": "^8.53.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react": "^7.36.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^8.0.3",
-    "lint-staged": "^15.1.0",
-    "nyc": "^15.1.0",
-    "playwright-core": "^1.39.0",
-    "prettier": "^3.1.0"
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
   }
 }

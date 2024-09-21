@@ -1,23 +1,31 @@
 {
-  "name": "react-image-turntable-example",
+  "name": "example",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "pnpm@9.10.0",
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 3000"
+    "preview": "vite preview --port 3000",
+    "test": "playwright test",
+    "test:coverage": "rm -rf {.nyc_output,coverage} && playwright test && yarn nyc report --reporter=lcov"
   },
   "dependencies": {
-    "modern-normalize": "^2.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "modern-normalize": "^3.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-image-turntable": "latest"
   },
   "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.2.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.47.1",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "nyc": "^15.1.0",
+    "playwright-core": "^1.39.0",
+    "react-router-dom": "^6.26.2",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.5"
   }
 }

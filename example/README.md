@@ -1,6 +1,12 @@
+<div align="center">
+
 # React Image Turntable Example
 
-Basic example built with Vite.
+Built with Vite.
+
+<a href="https://stackblitz.com/github/nerdyman/react-image-turntable/tree/main/example"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="Open in StackBlitz"/></a>
+
+</div>
 
 ## Scripts
 
