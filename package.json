@@ -11,7 +11,7 @@
     "bootstrap": "corepack enable && pnpm i --frozen-lockfile && pnpm --filter='*' run --parallel setup",
     "clean": "rm -rf ./example/tests/{coverage-reports,results} ./lib/dist ./{.,lib,example}.*.log ./{.,lib,example}/node_modules",
     "lint": "biome check",
-    "test": "pnpm run --filter=example test"
+    "test": "pnpm run --filter ./example test"
   },
   "resolutions": {
     "react-image-turntable": "workspace:*"
