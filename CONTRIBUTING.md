@@ -14,8 +14,8 @@ If you're on Windows, it's recommended that you use WSL.
 - Commits use the [Conventional Commits](https://conventionalcommits.org/) standard
 - pnpm to manage dependencies
 - [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions
-- Prettier & EditorConfig for code style
-- ESLint for quality
+- EditorConfig and Biome for formatting
+- Biome for linting
 - Husky for Git hooks
 
 ## Getting Started
@@ -35,9 +35,9 @@ pnpm -r run start
 
 # Or run them separately
 ## Start the library dev build
-pnpm run --filter=react-image-turntable start
+pnpm run --filter ./lib start
 ## Start the `example` codebase dev build
-pnpm run --filter=example start
+pnpm run --filter ./example start
 ```
 
 ## VS Code
