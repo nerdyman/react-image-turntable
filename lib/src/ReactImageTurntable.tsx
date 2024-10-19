@@ -55,12 +55,13 @@ export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntabl
               index === 0 ? CLASS_NAME_IMG_PRIMARY : CLASS_NAME_IMG_SECONDARY
             }`}
             src={src}
-            alt={`Turntable image ${index + 1}`}
+            alt={`Turntable ${index + 1} of ${images.length + 1}`}
             draggable={false}
             onDragStart={handleImgDragStart}
             style={{
               position: index === 0 ? undefined : 'absolute',
               opacity: index === activeImageIndex ? 1 : 0,
+              pointerEvents: index === activeImageIndex ? undefined : 'none',
               left: 0,
               top: 0,
               right: 0,
