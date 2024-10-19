@@ -14,7 +14,7 @@ export default defineConfig((options) => ({
   format: ['cjs', 'esm'],
   bundle: true,
   metafile: WRITE_METAFILE,
-  minify: !options.watch,
+  minify: !options.watch && !WRITE_METAFILE,
   target,
   sourcemap: true,
   splitting: true,
