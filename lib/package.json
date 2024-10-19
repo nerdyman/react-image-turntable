@@ -1,6 +1,7 @@
 {
   "version": "3.1.2",
   "name": "react-image-turntable",
+  "packageManager": "pnpm@9.12.2",
   "license": "MIT",
   "repository": {
     "type": "git",
