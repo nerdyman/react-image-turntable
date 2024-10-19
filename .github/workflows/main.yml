@@ -49,6 +49,5 @@ jobs:
       - uses: preactjs/compressed-size-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          install-script: 'pnpm install --frozen-lockfile --filter ./lib'
-          build-script: 'build'
-          cwd: ${{github.workspace}}/lib
+          install-script: 'pnpm --filter ./lib install --frozen-lockfile'
+          build-script: 'pnpm --filter ./lib run build'
