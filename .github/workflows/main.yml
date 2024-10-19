@@ -14,7 +14,7 @@ jobs:
     name: Build, lint and test
     runs-on: ubuntu-latest
     steps:
-      - name: 🛒 Checkout repo
+      - name: 🛒 Checkout Repo
         uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
@@ -25,19 +25,22 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm run bootstrap
 
-      - name: Build library
+      - name: Build Library
         run: pnpm --filter ./lib build
 
       - name: Lint
         run: pnpm lint --reporter=github
 
-      - name: Test:Execute
+      - name: Run Test
         run: pnpm run test
 
-      - name: Test:Upload
+      - name: Tests Summary
+        run: cat  ${{github.workspace}}/example/tests/coverage-reports/coverage-summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload Coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
@@ -49,6 +52,6 @@ jobs:
       - uses: preactjs/compressed-size-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          install-script: 'pnpm install --frozen-lockfile --filter react-image-turntable'
+          install-script: 'echo noop'
           build-script: 'build'
           cwd: lib

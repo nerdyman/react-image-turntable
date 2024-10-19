@@ -5,7 +5,7 @@ import type { CoverageReportOptions } from 'monocart-coverage-reports';
  */
 const coverageOptions: CoverageReportOptions = {
   name: 'React Image Turntable',
-  reports: ['console-details', 'v8', 'lcovonly'],
+  reports: ['console-details', 'v8', 'lcovonly', 'markdown-summary'],
 
   entryFilter: {
     '**/node_modules/**': false,
