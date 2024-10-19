@@ -1,4 +1,4 @@
-import { test as testBase, type Page } from '@playwright/test';
+import { type Page, test as testBase } from '@playwright/test';
 import MCR from 'monocart-coverage-reports';
 
 import coverageOptions from './mcr.config';

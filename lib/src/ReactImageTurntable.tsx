@@ -1,4 +1,4 @@
-import { forwardRef, type CSSProperties, type MouseEvent } from 'react';
+import { type CSSProperties, type MouseEvent, forwardRef } from 'react';
 
 import type { ReactImageTurntableProps } from './types';
 

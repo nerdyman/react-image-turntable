@@ -110,7 +110,7 @@ export const useReactImageTurntable = ({
     };
 
     const handlePointerDown = (ev: PointerEvent) => {
-      if (ev.button == 2) {
+      if (ev.button === 2) {
         return;
       }
 
@@ -128,7 +128,7 @@ export const useReactImageTurntable = ({
       window.removeEventListener('pointerup', handlePointerUp);
       window.removeEventListener('pointermove', handlePointerMove);
     };
-  }, [imagesCount, movementSensitivity, onIndexChange]);
+  }, [imagesCount, movementSensitivity]);
 
   return {
     activeImageIndex,

@@ -87,7 +87,7 @@ export const AdvancedDemo: FC = () => {
        */}
       <details open={true} className="main__controls controls">
         <summary className="controls__head">
-          <div className="controls__indicator" aria-hidden="true"></div>
+          <div className="controls__indicator" aria-hidden="true" />
           <h2 className="controls__title">Controls</h2>
         </summary>
 
@@ -105,6 +105,7 @@ export const AdvancedDemo: FC = () => {
 
             <div className="toolbar-field">
               <button
+                type="button"
                 title="Previous image"
                 onClick={() =>
                   turntableProps.setActiveImageIndex(turntableProps.activeImageIndex - 1)
@@ -113,6 +114,7 @@ export const AdvancedDemo: FC = () => {
                 &lt;
               </button>
               <button
+                type="button"
                 title="Next image"
                 onClick={() =>
                   turntableProps.setActiveImageIndex(turntableProps.activeImageIndex + 1)

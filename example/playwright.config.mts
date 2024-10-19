@@ -2,7 +2,7 @@
 import { type PlaywrightTestConfig, devices } from '@playwright/test';
 
 const IS_CI = !!process.env.CI;
-const PORT = !isNaN(Number(process.env.PORT)) ? Number(process.env.PORT) : 3000;
+const PORT = !Number.isNaN(Number(process.env.PORT)) ? Number(process.env.PORT) : 3000;
 
 process.env.PORT = String(PORT);
 

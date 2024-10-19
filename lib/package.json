@@ -14,15 +14,7 @@
     "url": "https://github.com/nerdyman"
   },
   "description": "Display a set of images as a draggable 360 degree turntable.",
-  "keywords": [
-    "react",
-    "image",
-    "360",
-    "turntable",
-    "rotator",
-    "slider"
-  ],
-  "packageManager": "pnpm@9.10.0",
+  "keywords": ["react", "image", "360", "turntable", "rotator", "slider"],
   "engines": {
     "node": ">=18.0.0"
   },
@@ -44,10 +36,7 @@
       }
     }
   },
-  "files": [
-    "src",
-    "dist"
-  ],
+  "files": ["src", "dist"],
   "scripts": {
     "analyze": "ANALYZE=true pnpx esbuild-visualizer --metadata ./dist/metafile-esm.json",
     "start": "concurrently -k -s first -n \"tsup,ts\" -c \"blue,cyan\" \"tsup --watch\" \"pnpm run check:types --watch --preserveWatchOutput\"",
@@ -70,11 +59,7 @@
       "not ie > 0",
       "not op_mini all"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "peerDependencies": {
     "react": ">=16.8",

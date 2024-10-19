@@ -11,34 +11,25 @@ on:
 
 jobs:
   build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node: ['20.x']
-        os: [ubuntu-latest]
+    name: Build, lint and test
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+      - name: 🛒 Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Cache pnpm modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v4
 
-      - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v2
+      - name: ⚒️ Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: npm run bootstrap
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm lint --reporter=github
 
       - name: Test:Execute
         run: pnpm run test
@@ -48,10 +39,11 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
         with:
-          coverageLocations: ${{github.workspace}}/coverage/*.info:lcov
+          coverageLocations: ${{github.workspace}}/example/tests/coverage-reports/*.info:lcov
 
-      # Disabled until https://github.com/pnpm/pnpm/issues/6424 is resolved.
-      # - uses: preactjs/compressed-size-action@v2
-      #   with:
-      #     repo-token: '${{ secrets.GITHUB_TOKEN }}'
-      #     build-script: 'build'
+      - uses: preactjs/compressed-size-action@v2
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          install-script: 'pnpm install --frozen-lockfile --filter react-image-turntable'
+          build-script: 'build'
+          cwd: lib

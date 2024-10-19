@@ -14,7 +14,7 @@ test.describe('ReactImageTurntable', () => {
     const { violations } = await new AxeBuilder({ page }).exclude('.controls').analyze();
 
     if (violations.length) {
-      console.error(`[axe] violations: `, violations);
+      console.error('[axe] violations:', violations);
       throw new Error('axe violations found');
     }
   });
