@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "packageManager": "pnpm@9.12.2",
   "scripts": {
+    "setup": "pnpm playwright install chromium",
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview --port 3000",

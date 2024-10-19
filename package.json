@@ -8,9 +8,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "bootstrap": "npm run bootstrap:project && yarn bootstrap:playwright",
-    "bootstrap:project": "corepack enable && pnpm i --frozen-lockfile",
-    "bootstrap:playwright": "yarn exec playwright install chromium",
+    "bootstrap": "corepack enable && pnpm i --frozen-lockfile && pnpm --filter='*' run --parallel setup",
     "clean": "rm -rf ./example/tests/{coverage-reports,results} ./lib/dist ./{.,lib,example}.*.log ./{.,lib,example}/node_modules",
     "lint": "biome check",
     "test": "pnpm run --filter=example test"
