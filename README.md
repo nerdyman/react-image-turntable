@@ -6,13 +6,7 @@ Display a set of images as a draggable 360 degree turntable.
 
 [![React Image Turntable with rotating car](https://raw.githubusercontent.com/nerdyman/stuff/main/libs/react-image-turntable/capture.gif)](https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598)
 
-<a href="https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598" target="_blank" rel="noopener, noreferrer">
-
-### [👉 &nbsp; Try the demo &nbsp;👈](https://codesandbox.io/s/github/nerdyman/react-image-turntable/tree/main/example?file=/src/App.tsx:5537-5598)
-
-</a>
-
-<br />
+<a href="https://stackblitz.com/github/nerdyman/react-image-turntable/tree/main/example"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="Open in StackBlitz"/></a>
 
 <a href="https://npmjs.com/package/react-image-turntable"><img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=npm" alt="NPM package" /></a>
 <a href="https://github.com/nerdyman/react-image-turntable/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/react-image-turntable.svg" alt="License MIT" /></a>
@@ -27,7 +21,7 @@ Display a set of images as a draggable 360 degree turntable.
 - Responsive & intrinsically sized
 - Built-in keyboard navigation
 - Programmatically controllable
-- Teeny Tiny (less than 1kb gzipped)
+- Teeny Tiny
 - Zero dependencies
 - Type safe
 

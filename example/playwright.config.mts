@@ -9,6 +9,8 @@ process.env.PORT = String(PORT);
 console.info('[playwright.config]', { IS_CI, PORT });
 
 const config: PlaywrightTestConfig = {
+  globalSetup: './tests/global.setup.ts',
+  globalTeardown: './tests/global.teardown.ts',
   forbidOnly: IS_CI,
   retries: IS_CI ? 2 : 0,
   testDir: './',

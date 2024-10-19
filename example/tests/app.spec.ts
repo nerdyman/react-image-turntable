@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import { AxeBuilder } from '@axe-core/playwright';
-import { type Page, test, expect } from '@playwright/test';
+import { type Page, expect } from '@playwright/test';
+
+import { test } from './fixtures';
 
 test.describe('ReactImageTurntable', () => {
   const getSliderElement = (page: Page) => page.getByRole('slider');

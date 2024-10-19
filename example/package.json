@@ -7,8 +7,7 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview --port 3000",
-    "test": "playwright test",
-    "test:coverage": "rm -rf {.nyc_output,coverage} && playwright test && yarn nyc report --reporter=lcov"
+    "test": "playwright test"
   },
   "dependencies": {
     "modern-normalize": "^3.0.1",
@@ -22,7 +21,7 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "nyc": "^15.1.0",
+    "monocart-coverage-reports": "^2.11.1",
     "playwright-core": "^1.39.0",
     "react-router-dom": "^6.26.2",
     "typescript": "^5.6.2",

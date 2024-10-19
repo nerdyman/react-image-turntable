@@ -1,6 +1,6 @@
 import { forwardRef, type CSSProperties, type MouseEvent } from 'react';
 
-import type { ReactImageTurntableRootProps } from './types';
+import type { ReactImageTurntableProps } from './types';
 
 /** Base `className` for images. */
 export const CLASS_NAME_IMG = '__react-image-turntable-img';
@@ -16,7 +16,7 @@ const handleImgDragStart = (ev: MouseEvent<HTMLImageElement>) => {
   ev.preventDefault();
 };
 
-export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntableRootProps>(
+export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntableProps>(
   (
     {
       activeImageIndex,

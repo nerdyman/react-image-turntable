@@ -36,5 +36,5 @@ export interface UseReactImageTurntableReturn extends Pick<UseReactImageTurntabl
 }
 
 /** Base props *and* all available HTML element props. */
-export type ReactImageTurntableRootProps = HtmlHTMLAttributes<HTMLDivElement> &
+export type ReactImageTurntableProps = HtmlHTMLAttributes<HTMLDivElement> &
   UseReactImageTurntableReturn;

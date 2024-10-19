@@ -25,4 +25,5 @@ dist-ssr
 *.ignore
 
 # Test output
-tests/results
+tests/results/
+coverage-reports/
