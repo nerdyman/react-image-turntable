@@ -37,10 +37,13 @@ jobs:
       - name: Lint
         run: pnpm lint --reporter=github
 
-      - name: Run Test
+      - name: Run Tests
         run: |
           pnpm run test
           cat ${{github.workspace}}/example/tests/coverage-reports/coverage-summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Check Package
+        run: pnpm --filter ./lib run check
 
       - name: Upload Coverage
         uses: paambaati/codeclimate-action@v9.0.0
