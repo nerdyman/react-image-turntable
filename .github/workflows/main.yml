@@ -42,6 +42,8 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
         with:
+          debug: true
+          coverageCommand: cp -r ${{github.workspace}}/lib/src ${{github.workspace}}/example/tests
           coverageLocations: ${{github.workspace}}/example/tests/coverage-reports/*.info:lcov
 
       - uses: preactjs/compressed-size-action@v2
