@@ -30,7 +30,7 @@ export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntabl
   ) => {
     const rootStyle: CSSProperties = {
       position: 'relative',
-      touchAction: 'none',
+      touchAction: 'pan-y',
       userSelect: 'none',
       ...style,
     };
