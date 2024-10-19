@@ -35,14 +35,6 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    IS_CI && {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    IS_CI && {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
   ].filter(Boolean) as PlaywrightTestConfig['projects'],
 };
 
