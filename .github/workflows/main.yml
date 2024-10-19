@@ -1,5 +1,8 @@
 name: ci
 
+env:
+  ANALYZE: true
+
 on:
   push:
     branches: [main]
@@ -35,10 +38,9 @@ jobs:
         run: pnpm lint --reporter=github
 
       - name: Run Test
-        run: pnpm run test
-
-      - name: Tests Summary
-        run: cat  ${{github.workspace}}/example/tests/coverage-reports/coverage-summary.md >> $GITHUB_STEP_SUMMARY
+        run: |
+          pnpm run test
+          cat ${{github.workspace}}/example/tests/coverage-reports/coverage-summary.md >> $GITHUB_STEP_SUMMARY
 
       - name: Upload Coverage
         uses: paambaati/codeclimate-action@v9.0.0
@@ -49,9 +51,7 @@ jobs:
           workingDirectory: ${{github.workspace}}/lib
           coverageLocations: ${{github.workspace}}/example/tests/coverage-reports/*.info:lcov
 
-      - uses: preactjs/compressed-size-action@v2
+      - name: Analyze esbuild bundle size
+        uses: exoego/esbuild-bundle-analyzer@v1
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          install-script: 'echo noop'
-          build-script: 'build'
-          cwd: lib
+          metafiles: "lib/dist/metafile-esm.json"
