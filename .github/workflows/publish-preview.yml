@@ -1,0 +1,29 @@
+name: Publish Preview Release
+on:
+  pull_request:
+    types: [synchronize]
+jobs:
+  approved:
+    if: contains(join(github.event.pull_request.labels.*.name, ','), 'publish-preview')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛒 Checkout repo
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - name: ⚒️ Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: 📦 Install Dependencies
+        run: npm run bootstrap
+
+      - name: 🔨 Build
+        run: pnpm run --filter react-image-turntable build
+
+      - name: 🚀 Publish Preview Release
+        run: pnpx pkg-pr-new publish './lib' --template='./example'

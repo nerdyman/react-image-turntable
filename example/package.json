@@ -1,23 +1,31 @@
 {
-  "name": "react-image-turntable-example",
+  "name": "example",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "pnpm@9.12.2",
   "scripts": {
+    "setup": "pnpm exec playwright install",
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 3000"
+    "preview": "vite preview --port 3000",
+    "test": "playwright test"
   },
   "dependencies": {
-    "pepjs": "^0.5.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-image-turntable": "latest"
+    "modern-normalize": "^3.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-image-turntable": "*"
   },
   "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.2.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.48.1",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.2",
+    "monocart-coverage-reports": "^2.11.1",
+    "playwright-core": "^1.48.1",
+    "react-router-dom": "^6.27.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.9"
   }
 }
