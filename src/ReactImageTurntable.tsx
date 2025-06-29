@@ -31,6 +31,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
   movementSensitivity = 20,
   onIndexChange,
   autoRotate = { disabled: false },
+  reverseHorizontal = false,
   ...props
 }) => {
   const { ref, activeImageIndex } = useTurntableState({
@@ -38,6 +39,7 @@ export const ReactImageTurntable: FC<ReactImageTurntableFullProps> = ({
     imagesCount: images.length - 1,
     movementSensitivity,
     autoRotate,
+    reverseHorizontal,
   });
 
   const rootStyle: CSSProperties = {

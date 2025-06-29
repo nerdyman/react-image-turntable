@@ -4,7 +4,10 @@ import type { ReactImageTurntableProps } from './types';
 
 interface UseTurntableStateProps
   extends Required<
-    Pick<ReactImageTurntableProps, 'initialImageIndex' | 'movementSensitivity' | 'autoRotate'>
+    Pick<
+      ReactImageTurntableProps,
+      'initialImageIndex' | 'movementSensitivity' | 'autoRotate' | 'reverseHorizontal'
+    >
   > {
   /** Number of images starting from zero. */
   imagesCount: number;
@@ -15,6 +18,7 @@ export const useTurntableState = ({
   imagesCount,
   movementSensitivity,
   autoRotate,
+  reverseHorizontal,
 }: UseTurntableStateProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(initialImageIndex);
   const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
@@ -70,12 +74,20 @@ export const useTurntableState = ({
 
       if (distanceDragged <= -movementSensitivity) {
         prevDragPosition = prevDragPosition + movementSensitivity;
-        incrementActiveIndex();
+        if (!reverseHorizontal) {
+          incrementActiveIndex();
+        } else {
+          decrementActiveIndex();
+        }
       }
 
       if (distanceDragged >= movementSensitivity) {
         prevDragPosition = prevDragPosition - movementSensitivity;
-        decrementActiveIndex();
+        if (!reverseHorizontal) {
+          decrementActiveIndex();
+        } else {
+          incrementActiveIndex();
+        }
       }
     };
 

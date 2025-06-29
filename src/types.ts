@@ -15,6 +15,8 @@ export interface ReactImageTurntableProps {
     /** The speed (in ms) at which the turntable rotates. */
     interval?: number;
   };
+  /** In case you want to change the direction on dragging left/right. */
+  reverseHorizontal?: boolean;
 }
 
 /** Base props *and* all available HTML element props. */
