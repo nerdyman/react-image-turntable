@@ -17,7 +17,7 @@
   "description": "Display a set of images as a draggable 360 degree turntable.",
   "keywords": ["react", "image", "360", "turntable", "rotator", "slider"],
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "sideEffects": false,
   "type": "module",
