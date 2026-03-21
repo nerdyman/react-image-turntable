@@ -43,13 +43,13 @@ export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntabl
         style={rootStyle}
         tabIndex={tabIndex}
       >
-        {images.map((src, index) => (
+        {images.map(({ alt, className, draggable = false, src, style }, index) => (
           <img
             key={src}
-            className={`${CLASS_NAME_IMG} ${index === 0 ? CLASS_NAME_IMG_PRIMARY : CLASS_NAME_IMG_SECONDARY}`}
+            className={`${CLASS_NAME_IMG} ${index === 0 ? CLASS_NAME_IMG_PRIMARY : CLASS_NAME_IMG_SECONDARY}${className ? ` ${className}` : ''}`}
             src={src}
-            alt={`Turntable ${index + 1} of ${images.length + 1}`}
-            draggable={false}
+            alt={alt || `Turntable ${index + 1} of ${images.length + 1}`}
+            draggable={draggable}
             onDragStart={handleImgDragStart}
             style={{
               position: index === 0 ? undefined : 'absolute',
@@ -63,6 +63,7 @@ export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntabl
               maxWidth: '100%',
               height: '100%',
               objectFit: 'cover',
+              ...style,
             }}
           />
         ))}

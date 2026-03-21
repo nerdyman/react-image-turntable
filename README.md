@@ -40,12 +40,12 @@ pnpm i react-image-turntable
 ### Example
 
 ```tsx
-import { ReactImageTurntable, useReactImageTurntable } from 'react-image-turntable';
+import { ReactImageTurntable, useReactImageTurntable } from "react-image-turntable";
 
 const images = [
-  'https://via.placeholder.com/1200x800?text=1',
-  'https://via.placeholder.com/1200x800?text=2',
-  'https://via.placeholder.com/1200x800?text=3',
+  { src: "https://via.placeholder.com/1200x800?text=1", alt: "Image 1" },
+  { src: "https://via.placeholder.com/1200x800?text=2", alt: "Image 2" },
+  { src: "https://via.placeholder.com/1200x800?text=3", alt: "Image 3" },
 ];
 
 export const App = () => {
@@ -92,12 +92,12 @@ to change the images simply change the `images` prop passed into the hook.
 <summary>View example</summary>
 
 ```tsx
-import { ReactImageTurntable, useReactImageTurntable } from 'react-image-turntable';
+import { ReactImageTurntable, useReactImageTurntable } from "react-image-turntable";
 
 const images = [
-  'https://via.placeholder.com/1200x800?text=1',
-  'https://via.placeholder.com/1200x800?text=2',
-  'https://via.placeholder.com/1200x800?text=3',
+  { src: "https://via.placeholder.com/1200x800?text=1", alt: "Image 1" },
+  { src: "https://via.placeholder.com/1200x800?text=2", alt: "Image 2" },
+  { src: "https://via.placeholder.com/1200x800?text=3", alt: "Image 3" },
 ];
 
 export const App = () => {

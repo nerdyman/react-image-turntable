@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { UseReactImageTurntableProps, UseReactImageTurntableReturn } from './types.js';
@@ -14,7 +16,7 @@ export const useReactImageTurntable = ({
   const imagesCount = images.length - 1;
   const { interval: autoRotateInterval = 200, enabled: autoRotateIsEnabled = false } = autoRotate;
   const [activeImageIndex, setActiveImageIndexUnsafe] = useState(initialImageIndex);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const turntableRef = useRef<HTMLDivElement>(null);
 
   /**
