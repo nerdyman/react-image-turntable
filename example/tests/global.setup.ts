@@ -3,7 +3,7 @@ import MCR from 'monocart-coverage-reports';
 
 import coverageOptions from './mcr.config';
 
-const globalSetup = async (config: FullConfig) => {
+const globalSetup = async (_config: FullConfig) => {
   const mcr = MCR(coverageOptions);
   mcr.cleanCache();
 };

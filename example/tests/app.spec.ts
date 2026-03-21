@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
 import { AxeBuilder } from '@axe-core/playwright';
-import { type Page, expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 
 import { test } from './fixtures';
 

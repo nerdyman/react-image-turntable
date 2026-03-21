@@ -153,3 +153,4 @@ The library is built for `ES2021`.
 
 - It's recommended you use a minimum of 24-36 for a smooth experience
 - Legacy version by [@andrewmcoupe](https://github.com/andrewmcoupe)
+- Demo image model by [ovee](https://www.cgtrader.com/designers/ovee)

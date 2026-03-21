@@ -1,3 +1,5 @@
 packages:
   - 'example/**'
   - 'lib/**'
+allowBuilds:
+  lefthook: true

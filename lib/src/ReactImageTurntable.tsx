@@ -1,4 +1,6 @@
-import { type CSSProperties, type MouseEvent, forwardRef } from 'react';
+'use client';
+
+import { type CSSProperties, forwardRef, type MouseEvent } from 'react';
 
 import type { ReactImageTurntableProps } from './types';
 
@@ -18,14 +20,7 @@ const handleImgDragStart = (ev: MouseEvent<HTMLImageElement>) => {
 
 export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntableProps>(
   (
-    {
-      activeImageIndex,
-      images,
-      style,
-      tabIndex = 0,
-      setActiveImageIndex: __setActiveImageIndex,
-      ...props
-    },
+    { activeImageIndex, images, style, tabIndex = 0, setActiveImageIndex: __setActiveImageIndex, ...props },
     ref,
   ) => {
     const rootStyle: CSSProperties = {
@@ -51,9 +46,7 @@ export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntabl
         {images.map((src, index) => (
           <img
             key={src}
-            className={`${CLASS_NAME_IMG} ${
-              index === 0 ? CLASS_NAME_IMG_PRIMARY : CLASS_NAME_IMG_SECONDARY
-            }`}
+            className={`${CLASS_NAME_IMG} ${index === 0 ? CLASS_NAME_IMG_PRIMARY : CLASS_NAME_IMG_SECONDARY}`}
             src={src}
             alt={`Turntable ${index + 1} of ${images.length + 1}`}
             draggable={false}

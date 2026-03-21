@@ -2,7 +2,6 @@
 
 import type { FC, PointerEventHandler } from 'react';
 import { useCallback, useState } from 'react';
-
 import { ReactImageTurntable, useReactImageTurntable } from 'react-image-turntable';
 
 export const images = [
@@ -107,18 +106,14 @@ export const AdvancedDemo: FC = () => {
               <button
                 type="button"
                 title="Previous image"
-                onClick={() =>
-                  turntableProps.setActiveImageIndex(turntableProps.activeImageIndex - 1)
-                }
+                onClick={() => turntableProps.setActiveImageIndex(turntableProps.activeImageIndex - 1)}
               >
                 &lt;
               </button>
               <button
                 type="button"
                 title="Next image"
-                onClick={() =>
-                  turntableProps.setActiveImageIndex(turntableProps.activeImageIndex + 1)
-                }
+                onClick={() => turntableProps.setActiveImageIndex(turntableProps.activeImageIndex + 1)}
               >
                 &gt;
               </button>
@@ -185,9 +180,7 @@ export const AdvancedDemo: FC = () => {
                 onClick={() => {
                   setCurrentImages((prev) => {
                     const next =
-                      prev.length === images.length
-                        ? prev.filter((__img, index) => index % 2 === 0)
-                        : images;
+                      prev.length === images.length ? prev.filter((__img, index) => index % 2 === 0) : images;
 
                     return next;
                   });

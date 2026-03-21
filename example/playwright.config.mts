@@ -1,5 +1,4 @@
-/* eslint no-console: 0 */
-import { type PlaywrightTestConfig, devices } from '@playwright/test';
+import { devices, type PlaywrightTestConfig } from '@playwright/test';
 
 const IS_CI = !!process.env.CI;
 const PORT = !Number.isNaN(Number(process.env.PORT)) ? Number(process.env.PORT) : 3000;

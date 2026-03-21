@@ -3,7 +3,7 @@ import MCR from 'monocart-coverage-reports';
 
 import coverageOptions from './mcr.config';
 
-const globalTeardown = async (config: FullConfig) => {
+const globalTeardown = async (_config: FullConfig) => {
   const mcr = MCR(coverageOptions);
   await mcr.generate();
 };

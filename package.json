@@ -1,7 +1,7 @@
 {
   "name": "root",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@10.32.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nerdyman/react-image-turntable.git"
@@ -11,16 +11,16 @@
     "bootstrap": "corepack enable && pnpm i --frozen-lockfile && pnpm --filter='*' run --parallel setup",
     "clean": "rm -rf ./example/tests/{coverage-reports,results} ./lib/dist ./{.,lib,example}.*.log ./{.,lib,example}/node_modules",
     "lint": "biome check",
-    "prepare": "husky",
-    "test": "pnpm run --filter ./example test"
+    "prepare": "lefthook install",
+    "test": "pnpm run --filter ./example test",
+    "upgrade-interactive": "pnpm upgrade --interactive --latest --filter='*'"
   },
   "resolutions": {
     "react-image-turntable": "workspace:*"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@types/node": "^22.7.7",
-    "husky": "^9.1.6",
-    "typescript": "^5.6.3"
+    "@biomejs/biome": "^2.4.8",
+    "@types/node": "^24.1.0",
+    "lefthook": "^2.1.4"
   }
 }
