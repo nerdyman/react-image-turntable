@@ -67,7 +67,7 @@ test.describe('ReactImageTurntable', () => {
       await page.keyboard.press('ArrowLeft');
       await expect(slider).toHaveAttribute('aria-valuenow', '1');
       await page.keyboard.press('ArrowLeft');
-      await expect(slider).toHaveAttribute('aria-valuenow', '36');
+      await expect(slider).toHaveAttribute('aria-valuenow', '48');
     });
 
     await test.step('moves back to start when arrow right is pressed when on last image', async () => {
@@ -108,7 +108,7 @@ test.describe('ReactImageTurntable', () => {
       await page.mouse.move(512, 200);
       await expect(slider).toHaveAttribute('aria-valuenow', '1');
       await page.mouse.move(512 - 20, 200);
-      await expect(slider).toHaveAttribute('aria-valuenow', '36');
+      await expect(slider).toHaveAttribute('aria-valuenow', '48');
     });
 
     await page.mouse.up();
