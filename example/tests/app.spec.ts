@@ -25,15 +25,15 @@ test.describe('ReactImageTurntable', () => {
     await test.step('Initial values match', async () => {
       await expect(slider).toHaveAttribute('aria-valuenow', '1');
       await expect(slider).toHaveAttribute('aria-valuemin', '1');
-      await expect(slider).toHaveAttribute('aria-valuemax', '36');
-      await expect(slider).toHaveAttribute('aria-valuetext', '1 of 36');
+      await expect(slider).toHaveAttribute('aria-valuemax', '48');
+      await expect(slider).toHaveAttribute('aria-valuetext', '1 of 48');
     });
 
     await test.step('Update count after splicing images', async () => {
       await page.locator('text=Splice images').click();
       await expect(slider).toHaveAttribute('aria-valuenow', '1');
-      await expect(slider).toHaveAttribute('aria-valuemax', '18');
-      await expect(slider).toHaveAttribute('aria-valuetext', '1 of 18');
+      await expect(slider).toHaveAttribute('aria-valuemax', '24');
+      await expect(slider).toHaveAttribute('aria-valuetext', '1 of 24');
     });
   });
 
