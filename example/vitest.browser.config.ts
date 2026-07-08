@@ -33,7 +33,9 @@ export default defineConfig({
         'html',
         'clover',
         'json',
-        'lcov',
+        // Emit `SF:` paths relative to the repo root (rather than `example/`, the cwd
+        // when this runs) so they line up with `sonar.sources` in CI.
+        ['lcov', { projectRoot: fileURLToPath(new URL('..', import.meta.url)) }],
         ['text-summary', { file: 'coverage-summary.txt' }],
       ],
     },
