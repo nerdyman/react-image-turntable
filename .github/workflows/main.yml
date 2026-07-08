@@ -39,8 +39,11 @@ jobs:
 
       - name: Run Tests
         run: |
-          pnpm run test
-          cat ${{github.workspace}}/example/tests/coverage-reports/coverage-summary.md >> $GITHUB_STEP_SUMMARY
+          pnpm run test:coverage
+          echo '### Coverage' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat example/coverage/coverage-summary.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
 
       - name: Check Package
         run: pnpm --filter ./lib run check
@@ -52,7 +55,7 @@ jobs:
         with:
           debug: true
           workingDirectory: ${{github.workspace}}/lib
-          coverageLocations: ${{github.workspace}}/example/tests/coverage-reports/*.info:lcov
+          coverageLocations: ${{github.workspace}}/example/coverage/lcov.info:lcov
 
       - name: Analyze esbuild bundle size
         uses: exoego/esbuild-bundle-analyzer@v1

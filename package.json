@@ -13,6 +13,7 @@
     "lint": "biome check",
     "prepare": "lefthook install",
     "test": "pnpm run --filter ./example test",
+    "test:coverage": "pnpm run --filter ./example test:coverage",
     "upgrade-interactive": "pnpm upgrade --interactive --latest --filter='*'"
   },
   "resolutions": {

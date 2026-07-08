@@ -28,6 +28,14 @@ export default defineConfig({
       allowExternal: true,
       include: [/*'src/demos/**',*/ `${fileURLToPath(new URL('../lib/src', import.meta.url))}/**`],
       exclude: [...coverageConfigDefaults.exclude, '**/lib/src/index.ts', '**/lib/src/types.ts'],
+      reporter: [
+        'text',
+        'html',
+        'clover',
+        'json',
+        'lcov',
+        ['text-summary', { file: 'coverage-summary.txt' }],
+      ],
     },
     browser: {
       enabled: true,
