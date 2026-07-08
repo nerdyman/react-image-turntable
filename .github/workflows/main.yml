@@ -51,14 +51,17 @@ jobs:
       - name: Check Package
         run: pnpm --filter ./lib run check
 
-      - name: Upload Coverage
-        uses: paambaati/codeclimate-action@v9.0.0
+      - name: 🧊 SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v7
         env:
-          CC_TEST_REPORTER_ID: '${{ secrets.CC_TEST_REPORTER_ID }}'
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          debug: true
-          workingDirectory: ${{github.workspace}}/lib
-          coverageLocations: ${{github.workspace}}/example/coverage/lcov.info:lcov
+          args: >
+            -Dsonar.organization=nerdyman
+            -Dsonar.projectKey=nerdyman_react-image-turntable
+            -Dsonar.sources=lib/src
+            -Dsonar.inclusions=**/*.js,**/*.jsx,**/*.ts,**/*.tsx,**/*.yml,**/*.yaml
+            -Dsonar.javascript.lcov.reportPaths=example/coverage/lcov.info
 
       - name: Analyze esbuild bundle size
         uses: exoego/esbuild-bundle-analyzer@v1
