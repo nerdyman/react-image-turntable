@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "setup": "pnpm exec playwright install --with-deps",
+    "setup": "pnpm exec playwright install",
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview --port 3000",
