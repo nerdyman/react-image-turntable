@@ -11,7 +11,7 @@ Display a set of images as a draggable 360 degree turntable.
 <a href="https://npmjs.com/package/react-image-turntable"><img src="https://img.shields.io/npm/v/react-image-turntable.svg?label=npm" alt="NPM package" /></a>
 <a href="https://github.com/nerdyman/react-image-turntable/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/react-image-turntable.svg" alt="License MIT" /></a>
 <a href="https://github.com/nerdyman/react-compare-slider/actions?query=workflow%3Abuild"><img alt="GitHub CI status" src="https://img.shields.io/github/actions/workflow/status/nerdyman/react-image-turntable/main.yml" /></a>
-<a href="https://codeclimate.com/github/nerdyman/react-image-turntable/test_coverage"><img src="https://img.shields.io/codeclimate/coverage/nerdyman/react-image-turntable" /></a>
+<a href="https://sonarcloud.io/summary/new_code?id=nerdyman_react-image-turntable&branch=main"><img src="https://img.shields.io/sonar/coverage/nerdyman_react-image-turntable?server=https%3A%2F%2Fsonarcloud.io" alt="Coverage" /></a>
 
 </div>
 
