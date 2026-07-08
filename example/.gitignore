@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Vitest browser mode failure artifacts (e.g. screenshots).
+.vitest-attachments/
+tests/__screenshots__/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -23,7 +27,3 @@ dist-ssr
 *.sln
 *.sw?
 *.ignore
-
-# Test output
-tests/results/
-coverage-reports/
