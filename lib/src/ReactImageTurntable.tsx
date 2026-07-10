@@ -53,16 +53,13 @@ export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntabl
             onDragStart={handleImgDragStart}
             style={{
               position: index === 0 ? undefined : 'absolute',
+              display: 'block',
+              inset: index === 0 ? undefined : 0,
+              maxWidth: '100%',
+              maxHeight: '100%',
+              objectFit: 'contain',
               opacity: index === activeImageIndex ? 1 : 0,
               pointerEvents: index === activeImageIndex ? undefined : 'none',
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
-              width: '100%',
-              maxWidth: '100%',
-              height: '100%',
-              objectFit: 'cover',
               ...style,
             }}
           />

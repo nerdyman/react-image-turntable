@@ -9,7 +9,7 @@ export const images = Array.from({ length: 48 }, (_, index) => ({
  * Basic demo with required props only.
  */
 export const BasicDemo = () => {
-  const turntableProps = useReactImageTurntable({ images });
+  const turntableProps = useReactImageTurntable({ images, initialImageIndex: 6 });
 
   return <ReactImageTurntable {...turntableProps} />;
 };

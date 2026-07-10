@@ -41,7 +41,7 @@ export const AdvancedDemo: FC = () => {
   // Call the hook with the props you want.
   const turntableProps = useReactImageTurntable({
     autoRotate,
-    initialImageIndex: 0,
+    initialImageIndex: 6,
     images: currentImages,
     movementSensitivity,
     onIndexChange,
