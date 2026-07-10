@@ -21,7 +21,7 @@
   "sideEffects": false,
   "type": "module",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.cts",
+  "types": "dist/index.d.mts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
