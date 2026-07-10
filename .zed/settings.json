@@ -1,4 +1,5 @@
 {
+  "prettier": { "allowed": false },
   "wrap_guides": [110],
   "code_actions_on_format": {
     "source.fixAll.biome": true,
