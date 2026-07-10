@@ -20,7 +20,6 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.cts",
   "exports": {
@@ -29,10 +28,6 @@
       "import": {
         "types": "./dist/index.d.mts",
         "import": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "import": "./dist/index.cjs"
       }
     }
   },
@@ -55,6 +50,7 @@
     "@types/node": "^24.1.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "browserslist-to-esbuild": "^2.1.1",
     "concurrently": "^10.0.3",
     "publint": "^0.3.21",
     "react": "^19.2.7",

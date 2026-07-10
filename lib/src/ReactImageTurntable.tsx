@@ -48,7 +48,7 @@ export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntabl
             key={src}
             className={`${CLASS_NAME_IMG} ${index === 0 ? CLASS_NAME_IMG_PRIMARY : CLASS_NAME_IMG_SECONDARY}${className ? ` ${className}` : ''}`}
             src={src}
-            alt={alt || `Turntable ${index + 1} of ${images.length + 1}`}
+            alt={alt ?? `Turntable ${index + 1} of ${images.length + 1}`}
             draggable={draggable}
             onDragStart={handleImgDragStart}
             style={{
