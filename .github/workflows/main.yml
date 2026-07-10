@@ -25,8 +25,8 @@ jobs:
       - name: ⚒️ Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
 
       - name: Install Dependencies
         run: npm run bootstrap
@@ -41,12 +41,7 @@ jobs:
         run: pnpm lint --reporter=github
 
       - name: Run Tests
-        run: |
-          pnpm run test:coverage
-          echo '### Coverage' >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          cat example/coverage/coverage-summary.txt >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
+        run: pnpm run test:coverage
 
       - name: Check Package
         run: pnpm --filter ./lib run check
