@@ -63,14 +63,14 @@ See the [example code](./example) for full demo.
 
 The `useReactImageTurntable` hook accepts the following properties.
 
-| Props                 | Type                      | Required | Default Value | Description                                                                  |
-| --------------------- | :------------------------ | :------: | :------------ | :--------------------------------------------------------------------------- |
-| `autoRotate.enabled`  | `boolean`                 |          | `false`       | Whether to automatically rotate the turntable.                               |
-| `autoRotate.interval` | `number`                  |          | `200`         | The interval between autorotations in ms.                                    |
-| `images`              | `string[]`                |    ✓     | `undefined`   | List of image `src` attributes.                                              |
-| `initialImageIndex`   | `number`                  |          | `0`           | Index of image to show first.                                                |
-| `movementSensitivity` | `number`                  |          | `20`          | The amount a "drag" has to move before an image changes to next or previous. |
-| `onIndexChange`       | `(index: number) => void` |          | `undefined`   | Callback to trigger whenever the active index changes.                       |
+| Props                 | Type                            | Required | Default Value | Description                                                                  |
+| --------------------- | :------------------------------ | :------: | :------------ | :--------------------------------------------------------------------------- |
+| `autoRotate.enabled`  | `boolean`                       |          | `false`       | Whether to automatically rotate the turntable.                               |
+| `autoRotate.interval` | `number`                        |          | `200`         | The interval between autorotations in ms.                                    |
+| `images`              | `ReactCompareImageImageProps[]` |    ✓     | `undefined`   | List of image `src` attributes.                                              |
+| `initialImageIndex`   | `number`                        |          | `0`           | Index of image to show first.                                                |
+| `movementSensitivity` | `number`                        |          | `20`          | The amount a "drag" has to move before an image changes to next or previous. |
+| `onIndexChange`       | `(index: number) => void`       |          | `undefined`   | Callback to trigger whenever the active index changes.                       |
 
 #### Output Props
 
