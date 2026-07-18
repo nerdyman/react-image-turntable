@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import type { UseReactImageTurntableProps, UseReactImageTurntableReturn } from './types.js';
+import type { UseReactImageTurntableProps, UseReactImageTurntableReturn } from './types';
 
 const defaultAutoRotate = {};
 

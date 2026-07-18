@@ -27,7 +27,10 @@ export type UseReactImageTurntableProps = {
   initialImageIndex?: number;
   /** List of image `src` attributes. */
   images: ReactCompareImageImageProps[];
-  /** The amount a "drag" has to move before an image changes to next or previous. */
+  /**
+   * The amount a "drag" has to move before an image changes to next or previous.
+   * @default 20
+   */
   movementSensitivity?: number;
   /** Callback to trigger whenever the active index changes. */
   onIndexChange?: (index: number) => void;
