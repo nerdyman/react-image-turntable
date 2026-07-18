@@ -13,11 +13,13 @@ export const useReactImageTurntable = ({
   movementSensitivity = 20,
   onIndexChange,
 }: UseReactImageTurntableProps): UseReactImageTurntableReturn => {
-  const imagesCount = images.length - 1;
+  const imagesCount = Math.max(images.length - 1, 0);
   const { interval = 200, enabled: autoRotateIsEnabled = false, counterClockwise = false } = autoRotate;
   const [activeImageIndex, setActiveImageIndexUnsafe] = useState(initialImageIndex);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const turntableRef = useRef<HTMLDivElement>(null);
+
+  const canAutoRotate = autoRotateIsEnabled && imagesCount > 0;
 
   /**
    * Safely set the image index with fallback to 0 if the index is out of bounds.
@@ -49,7 +51,7 @@ export const useReactImageTurntable = ({
       }
     };
 
-    if (autoRotateIsEnabled && !intervalRef.current) {
+    if (canAutoRotate && !intervalRef.current) {
       intervalRef.current = setInterval(() => {
         setActiveImageIndexUnsafe((prevIndex) => {
           if (counterClockwise) {
@@ -63,12 +65,12 @@ export const useReactImageTurntable = ({
       }, interval);
     }
 
-    if (!autoRotateIsEnabled) {
+    if (!canAutoRotate) {
       clearAutoRotateInterval();
     }
 
     return () => clearAutoRotateInterval();
-  }, [interval, autoRotateIsEnabled, counterClockwise, imagesCount]);
+  }, [interval, canAutoRotate, counterClockwise, imagesCount]);
 
   // Event bindings.
   useEffect(() => {
