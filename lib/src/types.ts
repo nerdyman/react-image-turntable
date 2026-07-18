@@ -1,17 +1,22 @@
 import type { ComponentProps, RefObject } from 'react';
 
-export interface ReactImageTurntableAutoRotateProps {
+export type ReactImageTurntableAutoRotateProps = {
   /**
    * Whether to automatically rotate the turntable.
    * @default false
    */
   enabled?: boolean;
   /**
+   * Whether the turntable should rotate counterclockwise.
+   * @default false
+   */
+  counterClockwise?: boolean;
+  /**
    * The speed in ms at which the turntable autorotates.
    * @default 200
    */
   interval?: number;
-}
+};
 
 export type ReactCompareImageImageProps = ComponentProps<'img'>;
 

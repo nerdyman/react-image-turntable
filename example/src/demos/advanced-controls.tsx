@@ -79,6 +79,25 @@ export const AdvancedDemoControls: React.FC<AdvancedDemoControlsProps> = ({
 
         <div className="toolbar__item">
           <label className="toolbar-field toolbar-field--inputs">
+            <code className="toolbar-field__label">autoRotate.counterClockwise</code>
+            <input
+              style={{ maxWidth: '4.25ch', textAlign: 'center' }}
+              disabled={!autoRotate?.enabled}
+              min={0}
+              type="checkbox"
+              checked={autoRotate?.counterClockwise}
+              onChange={(ev) =>
+                setAutoRotate((prev) => ({
+                  ...prev,
+                  counterClockwise: ev.target.checked,
+                }))
+              }
+            />
+          </label>
+        </div>
+
+        <div className="toolbar__item">
+          <label className="toolbar-field toolbar-field--inputs">
             <code className="toolbar-field__label">autoRotate.interval</code>
             <input
               style={{ maxWidth: '4.25ch', textAlign: 'center' }}
