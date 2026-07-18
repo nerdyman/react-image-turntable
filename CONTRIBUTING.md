@@ -2,36 +2,43 @@
 
 Thanks for contributing!
 
-## Getting Started
+## About
 
-Ensure you're using the Node version specified in [.nvmrc](./.nvmrc) and run the following to
-bootstrap the project:
+The repo is split up into [`lib`](./lib) for the main library code and [`example`](./example) for
+demos and testing.
 
-```sh
-npm run dx
-```
-
-Then run the following commands in separate terminals:
-
-```sh
-# Run both the library dev build and the `example` repo dev server
-pnpm run dev
-
-# Or run them separately
-## Start the library dev build
-pnpm run start
-## Start the `example` codebase dev build
-pnpm run --prefix example start
-```
+If you're on Windows, it's recommended that you use WSL.
 
 ## Standards
 
 - Commits use the [Conventional Commits](https://conventionalcommits.org/) standard
 - pnpm to manage dependencies
-- nvm to manage Node.js versions
-- Prettier & EditorConfig for code style
-- ESLint for quality
+- [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions
+- EditorConfig and Biome for formatting
+- Biome for linting
 - Husky for Git hooks
+
+## Getting Started
+
+Ensure you're using the Node version specified in [.nvmrc](./.nvmrc) and run the following to
+set up the project:
+
+```sh
+npm run bootstrap
+```
+
+Then run the following:
+
+```sh
+# Run both the library dev build and the `example` repo dev server
+pnpm -r run start
+
+# Or run them separately
+## Start the library dev build
+pnpm run --filter ./lib start
+## Start the `example` codebase dev build
+pnpm run --filter ./example start
+```
 
 ## VS Code
 

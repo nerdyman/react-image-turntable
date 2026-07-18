@@ -1,23 +1,36 @@
 {
-  "name": "react-image-turntable-example",
+  "name": "example",
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "setup": "pnpm exec playwright install",
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 3000"
+    "preview": "vite preview --port 3000",
+    "test": "vitest --config=vitest.browser.config.ts",
+    "test:coverage": "pnpm run test --coverage"
   },
   "dependencies": {
-    "pepjs": "^0.5.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "modern-normalize": "^3.0.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-image-turntable": "latest"
   },
   "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.2.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "@chialab/vitest-axe": "^0.19.1",
+    "@types/node": "^24.1.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "@vitest/browser-playwright": "^4.1.9",
+    "@vitest/coverage-istanbul": "^4.1.9",
+    "@vitest/expect": "^4.1.9",
+    "axe-core": "^4.12.1",
+    "playwright": "^1.58.2",
+    "react-router-dom": "^7.18.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.1.3",
+    "vitest": "^4.1.9",
+    "vitest-browser-react": "^2.2.0"
   }
 }

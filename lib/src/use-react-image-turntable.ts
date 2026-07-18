@@ -1,0 +1,148 @@
+'use client';
+
+import { useCallback, useEffect, useRef, useState } from 'react';
+
+import type { UseReactImageTurntableProps, UseReactImageTurntableReturn } from './types';
+
+const defaultAutoRotate = {};
+
+export const useReactImageTurntable = ({
+  initialImageIndex = 0,
+  autoRotate = defaultAutoRotate,
+  images,
+  movementSensitivity = 20,
+  onIndexChange,
+}: UseReactImageTurntableProps): UseReactImageTurntableReturn => {
+  const imagesCount = Math.max(images.length - 1, 0);
+  const { interval = 200, enabled: autoRotateIsEnabled = false, counterClockwise = false } = autoRotate;
+  const [activeImageIndex, setActiveImageIndexUnsafe] = useState(initialImageIndex);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const turntableRef = useRef<HTMLDivElement>(null);
+
+  const canAutoRotate = autoRotateIsEnabled && imagesCount > 0;
+
+  /**
+   * Safely set the image index with fallback to 0 if the index is out of bounds.
+   */
+  const setActiveImageIndex = useCallback(
+    (index: number) => {
+      const nextIndex = index > imagesCount ? 0 : index < 0 ? imagesCount : index;
+      setActiveImageIndexUnsafe(nextIndex);
+    },
+    [imagesCount],
+  );
+
+  // Handle image count changes.
+  useEffect(() => {
+    if (activeImageIndex > imagesCount) setActiveImageIndexUnsafe(0);
+  }, [activeImageIndex, imagesCount]);
+
+  // Handle `onIndexChange` callback.
+  useEffect(() => {
+    if (onIndexChange) onIndexChange(activeImageIndex);
+  }, [activeImageIndex, onIndexChange]);
+
+  // Control autorotation.
+  useEffect(() => {
+    const clearAutoRotateInterval = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+
+    if (canAutoRotate && !intervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        setActiveImageIndexUnsafe((prevIndex) => {
+          if (counterClockwise) {
+            const nextIndex = prevIndex - 1;
+            return nextIndex < 0 ? imagesCount : nextIndex;
+          }
+
+          const nextIndex = prevIndex + 1;
+          return nextIndex > imagesCount ? 0 : nextIndex;
+        });
+      }, interval);
+    }
+
+    if (!canAutoRotate) {
+      clearAutoRotateInterval();
+    }
+
+    return () => clearAutoRotateInterval();
+  }, [interval, canAutoRotate, counterClockwise, imagesCount]);
+
+  // Event bindings.
+  useEffect(() => {
+    const target = turntableRef.current as HTMLDivElement;
+    let prevDragPosition = 0;
+
+    const incrementActiveIndex = () => {
+      setActiveImageIndexUnsafe((prev) => {
+        const next = prev + 1 > imagesCount ? 0 : prev + 1;
+        return next;
+      });
+    };
+
+    const decrementActiveIndex = () => {
+      setActiveImageIndexUnsafe((prev) => {
+        const next = prev - 1 < 0 ? imagesCount : prev - 1;
+        return next;
+      });
+    };
+
+    const handleKeyDown = (ev: KeyboardEvent) => {
+      if (ev.key === 'ArrowLeft') {
+        decrementActiveIndex();
+      } else if (ev.key === 'ArrowRight') {
+        incrementActiveIndex();
+      }
+    };
+
+    const handlePointerMove = (ev: PointerEvent) => {
+      const distanceDragged = prevDragPosition - ev.clientX;
+
+      if (distanceDragged <= -movementSensitivity) {
+        prevDragPosition = prevDragPosition + movementSensitivity;
+        incrementActiveIndex();
+      }
+
+      if (distanceDragged >= movementSensitivity) {
+        prevDragPosition = prevDragPosition - movementSensitivity;
+        decrementActiveIndex();
+      }
+    };
+
+    const handlePointerUp = () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+    };
+
+    const handlePointerDown = (ev: PointerEvent) => {
+      if (ev.button === 2) {
+        return;
+      }
+
+      prevDragPosition = ev.clientX;
+      window.addEventListener('pointermove', handlePointerMove, { passive: true });
+      window.addEventListener('pointerup', handlePointerUp, { passive: true });
+    };
+
+    target.addEventListener('keydown', handleKeyDown, { capture: true });
+    target.addEventListener('pointerdown', handlePointerDown, { capture: true });
+
+    return () => {
+      target.removeEventListener('keydown', handleKeyDown, { capture: true });
+      target.removeEventListener('pointerdown', handlePointerDown, { capture: true });
+      window.removeEventListener('pointerup', handlePointerUp);
+      window.removeEventListener('pointermove', handlePointerMove);
+    };
+  }, [imagesCount, movementSensitivity]);
+
+  return {
+    activeImageIndex,
+    setActiveImageIndex,
+    images,
+    ref: turntableRef,
+  };
+};

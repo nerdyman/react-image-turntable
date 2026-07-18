@@ -1,4 +1,0 @@
-.nyc/
-node_modules/
-dist/
-*.ignore
