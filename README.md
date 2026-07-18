@@ -103,7 +103,7 @@ const images = [
 
 export const App = () => {
   const turntableProps = useReactImageTurntable({
-    autoRotate: { disabled: true, interval: 75 },
+    autoRotate: { disabled: false, interval: 75, counterClockwise: false },
     images,
     initialImageIndex: 1, // Start on the second image.
     movementSensitivity: 50, // Increase the amount of drag needed to change images.
@@ -111,7 +111,7 @@ export const App = () => {
   });
 
   const handleSelectFirstImage = () => {
-    turntableProps.setActiveIndex(0);
+    turntableProps.setActiveImageIndex(0);
   };
 
   return (
