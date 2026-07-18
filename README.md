@@ -77,12 +77,12 @@ The `useReactImageTurntable` hook accepts the following properties.
 
 The `useReactImageTurntable` hook returns the following properties.
 
-| Props                 | Type                        | Description                                   |
-| --------------------- | :-------------------------- | --------------------------------------------- |
-| `activeImageIndex`    | `number`                    | The index of the image currently being shown. |
-| `setActiveImageIndex` | `(index: number) => void`   | Function to set the active index.             |
-| `images`              | `string[]`                  | The images passed into the hook.              |
-| `ref`                 | `RefObject<HTMLDivElement>` | The ref of the root turntable element.        |
+| Props                 | Type                            | Description                                   |
+| --------------------- | :------------------------------ | --------------------------------------------- |
+| `activeImageIndex`    | `number`                        | The index of the image currently being shown. |
+| `setActiveImageIndex` | `(index: number) => void`       | Function to set the active index.             |
+| `images`              | `ReactCompareImageImageProps[]` | The images passed into the hook.              |
+| `ref`                 | `RefObject<HTMLDivElement>`     | The ref of the root turntable element.        |
 
 Note that there is no need for a `setImages` function. `images` is not stored in state. If you want
 to change the images simply change the `images` prop passed into the hook.
@@ -130,13 +130,13 @@ export const App = () => {
 ### Custom Styling
 
 The library uses the first image in `images[]` to intrinsically size the component, it also exports
-the following `className`s allowing you to apply custom styles.
+a `classNames` object allowing you to apply custom styles.
 
-| `className`                | Purpose                                                                   |
-| :------------------------- | :------------------------------------------------------------------------ |
-| `CLASS_NAME_IMG`           | Base class for all images.                                                |
-| `CLASS_NAME_IMG_PRIMARY`   | Class of first image in `images[]` (sets the size of the main component). |
-| `CLASS_NAME_IMG_SECONDARY` | Class of subsequent images.                                               |
+| `classNames` property | `className`                              | Purpose                                                                   |
+| :-------------------- | :--------------------------------------- | :------------------------------------------------------------------------ |
+| `img`                 | `__react-image-turntable-img`            | Base class for all images.                                                |
+| `imgPrimary`          | `__react-image-turntable-img--primary`   | Class of first image in `images[]` (sets the size of the main component). |
+| `imgSecondary`        | `__react-image-turntable-img--secondary` | Class of subsequent images.                                               |
 
 ---
 

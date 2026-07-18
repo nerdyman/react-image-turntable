@@ -5,11 +5,17 @@ import { type CSSProperties, forwardRef, type MouseEvent } from 'react';
 import type { ReactImageTurntableProps } from './types';
 
 /** Base `className` for images. */
-export const CLASS_NAME_IMG = '__react-image-turntable-img';
-/** `className` of first rendered image (sets the size of the main component). */
-export const CLASS_NAME_IMG_PRIMARY = `${CLASS_NAME_IMG}--primary`;
-/** `className` of subsequent images. */
-export const CLASS_NAME_IMG_SECONDARY = `${CLASS_NAME_IMG}--secondary`;
+const CLASS_NAME_IMG = '__react-image-turntable-img';
+
+/** `className`s used by the component. */
+export const classNames = Object.freeze({
+  /** Base `className` for images. */
+  img: CLASS_NAME_IMG,
+  /** `className` of first rendered image (sets the size of the main component). */
+  imgPrimary: `${CLASS_NAME_IMG}--primary`,
+  /** `className` of subsequent images. */
+  imgSecondary: `${CLASS_NAME_IMG}--secondary`,
+});
 
 /**
  * Firefox desktop tries to drag the image on `pointerdown` + `pointermove` so we need to prevent it.
@@ -46,7 +52,7 @@ export const ReactImageTurntable = forwardRef<HTMLDivElement, ReactImageTurntabl
         {images.map(({ alt, className, draggable = false, src, style }, index) => (
           <img
             key={src}
-            className={`${CLASS_NAME_IMG} ${index === 0 ? CLASS_NAME_IMG_PRIMARY : CLASS_NAME_IMG_SECONDARY}${className ? ` ${className}` : ''}`}
+            className={`${classNames.img} ${index === 0 ? classNames.imgPrimary : classNames.imgSecondary}${className ? ` ${className}` : ''}`}
             src={src}
             alt={alt ?? `Turntable ${index + 1} of ${images.length}`}
             draggable={draggable}

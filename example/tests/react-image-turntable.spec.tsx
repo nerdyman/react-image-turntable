@@ -1,16 +1,11 @@
 import { run as axe } from 'axe-core';
-import {
-  CLASS_NAME_IMG_PRIMARY,
-  CLASS_NAME_IMG_SECONDARY,
-  ReactImageTurntable,
-  useReactImageTurntable,
-} from 'react-image-turntable';
+import { classNames, ReactImageTurntable, useReactImageTurntable } from 'react-image-turntable';
 import { afterEach, describe, expect, test } from 'vitest';
 import { commands, page, userEvent } from 'vitest/browser';
 import { cleanup, render } from 'vitest-browser-react';
 
-import { AdvancedDemo } from '../src/demos/Advanced';
-import { BasicDemo } from '../src/demos/Basic';
+import { AdvancedDemo } from '../src/demos/advanced';
+import { BasicDemo } from '../src/demos/basic';
 
 const getSlider = () => page.getByRole('slider');
 
@@ -259,8 +254,8 @@ describe('ReactImageTurntable', () => {
   test('should fall back to a default alt and support custom classNames on images', async () => {
     await render(<CustomImagePropsTest />);
 
-    const primaryImage = document.querySelector<HTMLImageElement>(`.${CLASS_NAME_IMG_PRIMARY}`);
-    const secondaryImage = document.querySelector<HTMLImageElement>(`.${CLASS_NAME_IMG_SECONDARY}`);
+    const primaryImage = document.querySelector<HTMLImageElement>(`.${classNames.imgPrimary}`);
+    const secondaryImage = document.querySelector<HTMLImageElement>(`.${classNames.imgSecondary}`);
 
     expect(primaryImage?.alt).toBe('Turntable 1 of 2');
     expect(secondaryImage?.className).toContain('custom-image');
@@ -293,7 +288,7 @@ describe('ReactImageTurntable', () => {
       </div>,
     );
 
-    const img = document.querySelector<HTMLImageElement>(`.${CLASS_NAME_IMG_PRIMARY}`);
+    const img = document.querySelector<HTMLImageElement>(`.${classNames.imgPrimary}`);
     const dragStartEvent = new DragEvent('dragstart', { bubbles: true, cancelable: true });
 
     img?.dispatchEvent(dragStartEvent);
