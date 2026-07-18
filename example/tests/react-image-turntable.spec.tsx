@@ -51,6 +51,29 @@ const FastAutoRotateTest = () => {
   return <ReactImageTurntable {...turntableProps} />;
 };
 
+/** Renders a three-image turntable that autorotates backward quickly, to test wrapping before the first image. */
+const FastAutoRotateCounterClockwiseTest = () => {
+  const turntableProps = useReactImageTurntable({
+    autoRotate: { enabled: true, counterClockwise: true, interval: 20 },
+    images: [
+      {
+        src: 'https://raw.githubusercontent.com/nerdyman/stuff/main/libs/react-image-turntable/images/compressed/1.webp',
+        alt: '1',
+      },
+      {
+        src: 'https://raw.githubusercontent.com/nerdyman/stuff/main/libs/react-image-turntable/images/compressed/2.webp',
+        alt: '2',
+      },
+      {
+        src: 'https://raw.githubusercontent.com/nerdyman/stuff/main/libs/react-image-turntable/images/compressed/3.webp',
+        alt: '3',
+      },
+    ],
+  });
+
+  return <ReactImageTurntable {...turntableProps} />;
+};
+
 describe('ReactImageTurntable', () => {
   afterEach(async () => {
     const results = await axe(document.body, {
@@ -71,10 +94,11 @@ describe('ReactImageTurntable', () => {
 
     const slider = getSlider();
 
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    // AdvancedDemo starts on the 7th image.
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
     await expect.element(slider).toHaveAttribute('aria-valuemin', '1');
     await expect.element(slider).toHaveAttribute('aria-valuemax', '48');
-    await expect.element(slider).toHaveAttribute('aria-valuetext', '1 of 48');
+    await expect.element(slider).toHaveAttribute('aria-valuetext', '7 of 48');
 
     // Move to an index that will fall out of bounds once the image count shrinks below it.
     await page.getByRole('spinbutton', { name: /activeImageIndex/ }).fill('30');
@@ -99,26 +123,41 @@ describe('ReactImageTurntable', () => {
     await userEvent.tab();
     await expect.element(slider).toHaveFocus();
 
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
     await userEvent.keyboard('{ArrowRight}');
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '2');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '8');
     await userEvent.keyboard('{ArrowRight}');
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '3');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '9');
 
     await userEvent.tab();
     await userEvent.keyboard('{ArrowLeft}');
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '3');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '9');
     await userEvent.keyboard('{ArrowRight}');
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '3');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '9');
     await userEvent.keyboard('{Shift>}{Tab}{/Shift}');
 
     await userEvent.keyboard('{ArrowLeft}');
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '2');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '8');
     await userEvent.keyboard('{ArrowLeft}');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
+    await userEvent.keyboard('{ArrowLeft}');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '6');
+
+    await userEvent.keyboard('{ArrowRight}');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
+  });
+
+  test('should wrap in both directions when navigating with the keyboard from the boundary image', async () => {
+    await render(<CustomImagePropsTest />);
+
+    const slider = getSlider();
+
+    await userEvent.tab();
+    await expect.element(slider).toHaveFocus();
+
     await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
     await userEvent.keyboard('{ArrowLeft}');
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '48');
-
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '2');
     await userEvent.keyboard('{ArrowRight}');
     await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
   });
@@ -145,28 +184,28 @@ describe('ReactImageTurntable', () => {
     // Should navigate forwards when dragging right while pointer is down.
     x += 20;
     await commands.mouseMove({ x, y });
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '2');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '8');
     x += 20;
     await commands.mouseMove({ x, y });
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '3');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '9');
 
     // Should not move when pointer is released.
     await commands.mouseUp();
     x += 20;
     await commands.mouseMove({ x, y });
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '3');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '9');
     await commands.mouseDown();
 
     // Should navigate backwards when dragging left while pointer is down.
     x -= 20;
     await commands.mouseMove({ x, y });
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '2');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '8');
     x -= 20;
     await commands.mouseMove({ x, y });
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
     x -= 20;
     await commands.mouseMove({ x, y });
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '48');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '6');
 
     await commands.mouseUp();
   });
@@ -180,7 +219,7 @@ describe('ReactImageTurntable', () => {
 
     const slider = getSlider();
 
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
 
     // A real right-click opens the browser's native context menu, which WebKit doesn't
     // reliably dismiss in automated sessions, breaking subsequent tests:
@@ -189,7 +228,7 @@ describe('ReactImageTurntable', () => {
     slider.element().dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, button: 2 }));
     window.dispatchEvent(new PointerEvent('pointermove', { bubbles: true, clientX: 9999 }));
 
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
   });
 
   test('should wrap the active index when navigating out of bounds via controls', async () => {
@@ -201,15 +240,13 @@ describe('ReactImageTurntable', () => {
     const previousButton = page.getByTitle('Previous image');
     const nextButton = page.getByTitle('Next image');
 
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
 
-    // Should wrap to the last image when moving before the first.
     await previousButton.click();
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '48');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '6');
 
-    // Should wrap to the first image when moving past the last.
     await nextButton.click();
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
 
     // Should wrap out-of-range values entered directly into the index field.
     await indexInput.fill('-1');
@@ -239,6 +276,16 @@ describe('ReactImageTurntable', () => {
     await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
   });
 
+  test('should move backward and wrap to the last image when autoRotate.counterClockwise is enabled', async () => {
+    await render(<FastAutoRotateCounterClockwiseTest />);
+
+    const slider = getSlider();
+
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '3');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '2');
+  });
+
   test('should prevent the native browser drag behaviour on images', async () => {
     await render(
       <div className="main__turntable">
@@ -260,11 +307,11 @@ describe('ReactImageTurntable', () => {
 
     const slider = getSlider();
 
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '1');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '7');
 
     await page.getByText('autoRotate.enabled').click();
 
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '2');
-    await expect.element(slider).toHaveAttribute('aria-valuenow', '3');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '8');
+    await expect.element(slider).toHaveAttribute('aria-valuenow', '9');
   });
 });
