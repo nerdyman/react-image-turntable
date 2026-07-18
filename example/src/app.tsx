@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { createBrowserRouter, Link, type LinkProps, RouterProvider, useLocation } from 'react-router-dom';
 
-import { AdvancedDemo } from './demos/Advanced';
-import { BasicDemo } from './demos/Basic';
-import ErrorPage from './ErrorPage';
+import { AdvancedDemo } from './demos/advanced';
+import { BasicDemo } from './demos/basic';
+import ErrorPage from './error-page';
 
 const links: LinkProps[] = [
   { children: 'Advanced', to: '/' },
