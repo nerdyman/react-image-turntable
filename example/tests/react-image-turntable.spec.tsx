@@ -262,7 +262,7 @@ describe('ReactImageTurntable', () => {
     const primaryImage = document.querySelector<HTMLImageElement>(`.${CLASS_NAME_IMG_PRIMARY}`);
     const secondaryImage = document.querySelector<HTMLImageElement>(`.${CLASS_NAME_IMG_SECONDARY}`);
 
-    expect(primaryImage?.alt).toBe('Turntable 1 of 3');
+    expect(primaryImage?.alt).toBe('Turntable 1 of 2');
     expect(secondaryImage?.className).toContain('custom-image');
   });
 
